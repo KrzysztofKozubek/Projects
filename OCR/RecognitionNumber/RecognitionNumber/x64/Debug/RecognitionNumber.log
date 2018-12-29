@@ -1,0 +1,40 @@
+﻿  main.cpp
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(58): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(160): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(161): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(162): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(163): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(164): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(165): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(166): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(167): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(168): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(169): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(171): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(172): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(173): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(174): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(175): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(176): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(177): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(178): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(179): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(180): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(182): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(183): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(184): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(187): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(188): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(190): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(191): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\recognition.h(192): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\preprocessing.h(76): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\preprocessing.h(262): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\preprocessing.h(263): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\recognitionnumber\recognitionnumber\preprocessing.h(300): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+  RecognitionNumber.vcxproj -> E:\Programs\C++\RecognitionNumber\x64\Debug\RecognitionNumber.exe
+  RecognitionNumber.vcxproj -> E:\Programs\C++\RecognitionNumber\x64\Debug\RecognitionNumber.pdb (Partial PDB)

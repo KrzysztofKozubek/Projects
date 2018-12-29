@@ -1,0 +1,122 @@
+extends ../layout
+block content
+  include client_box
+  div(class='clientContainer container-fluid')
+    div(class='row container-spaces')
+      div(class='clientContent clearfix pageContent')
+        div(class='contentHeader col-md-12')
+          h2 Wypożyczenie roweru
+        div(class='col-md-12')
+          form(id="rentBikeForm" class='row' method='POST' action='/client/rent')
+            div(class='col-md-5')
+              div(class='form-group')
+                label(for='rentPlace') Wybierz placówkę
+                select(type='text' id='rentPlace' name='rentPlace' class='form-control')
+                  option 
+                  each val in places
+                    option(value='#{val.PlaceID}') #{val.PlaceName}, #{val.PlaceAddress}, #{val.PlaceCity}
+                .form-error
+                  span.default-error Proszę wypełnić to pole poprawnymi danymi
+              div(class='form-group')
+                label(class='label-form') Wybierz rodzaj roweru
+                div(class='radio')
+                  label
+                    input(type='radio' id='bikeType1' name='bikeType' value='miejski' checked)
+                    |miejski
+                div(class='radio')
+                  label
+                    input(type='radio' id='bikeType2' name='bikeType' value='szosowy')
+                    |szosowy
+                div(class='radio')                
+                  label
+                    input(type='radio' id='bikeType3' name='bikeType' value='trekkingowy')
+                    |trekkingowy
+                div(class='radio')
+                  label
+                    input(type='radio' id='bikeType4' name='bikeType' value='MTB')
+                    |MTB (górski)
+              div(class='form-group')
+                label(class='label-form') Rodzaj usługi
+                div(class='radio')
+                  label
+                    input(type='radio' id='rentType1' name='rentType' value='wypożyczenie' checked)
+                    |wypożyczenie
+                div(class='radio')
+                  label
+                    input(type='radio' id='rentType2' name='rentType' value='rezerwacja długoterminowa')
+                    |rezerwacja długoterminowa
+              div(class='form-group')
+                label(for='rentStartDate') Data rozpoczęcia
+                div(id='startDate' class='input-group date')
+                  input(id='rentStartDate' class='form-control' name='rentStartDate' type='text')
+                  span(class='input-group-addon')
+                    span(class='fa fa-calendar')
+              div(class='form-group tag-hidden')
+                label(for='rentEndDate') Data zakończenia
+                div(id='endDate' class='input-group date')
+                  input(id='rentEndDate' class='form-control' name='rentEndDate' type='text')
+                  span(class='input-group-addon')
+                    span(class='fa fa-calendar')
+              div(class='form-group')
+                label(class='label-form') Dodatkowe preferencje
+                div(class='checkbox')
+                  label
+                    input(type='checkbox' class='rentAdditional' name='rentAdditional1' value='Koszyk zakupowy')
+                    |Koszyk zakupowy          
+                div(class='checkbox')
+                    label
+                      input(type='checkbox' class='rentAdditional' name='rentAdditional2' value='Bidon')
+                      | Bidon          
+                div(class='checkbox')
+                    label
+                      input(type='checkbox' class='rentAdditional' name='rentAdditional3' value='Zapasowa pompka')
+                      |Zapasowa pompka         
+                div(class='checkbox')
+                    label
+                      input(type='checkbox' class='rentAdditional' name='rentAdditional4' value='Licznik')
+                      |Licznik
+                input(type='hidden' id='rentAdditional' name='rentAdditional' value='')
+            div(class='col-md-5 col-md-offset-2')
+              div(class='row')
+                div(class='col-md-12')
+                  h4 Odbiór roweru jako:
+                    br
+                    a(id='rentOtherUserFalse' href='javascript:;' class='tag-hidden') #{personalData.UserName} #{personalData.UserSurname}
+                    span #{personalData.UserName} #{personalData.UserSurname}
+                    |&#32;/&#32;
+                    a(id='rentOtherUserTrue' href='javascript:;') inna osoba
+                    span(class='tag-hidden') inna osoba
+                  input(type='hidden' id='rentOtherUser' name='rentOtherUser' value='0')
+                div(id="otherUserForm")
+                  div(class='form-group col-md-6')
+                    label(for='rentOtherName') Imię
+                    input(type='text' id='rentOtherName' name='rentOtherName' class='form-control' disabled)          
+                  div(class='form-group col-md-6')
+                    label(for='rentOtherSurname') Nazwisko
+                    input(type='text' id='rentOtherSurname' name='rentOtherSurname' class='form-control' disabled)         
+                  div(class='form-group col-md-12')
+                    label(for='rentOtherEmail') Email
+                    input(type='email' id='rentOtherEmail' name='rentOtherEmail' class='form-control' disabled)   
+                  div(class='form-group col-md-12')
+                    label(for='rentOtherPhone') Telefon
+                    input(type='text' id='rentOtherPhone' name='rentOtherPhone' class='form-control' disabled)          
+                  div(class='form-group col-md-12')
+                    label(for='rentOtherAddress') Ulica, numer domu/mieszkania
+                    input(type='text' id='rentOtherAddress' name='rentOtherAddress' class='form-control' disabled)          
+                  div(class='form-group col-md-12')
+                    label(for='rentOtherZipCity') Kod pocztowy i miejscowość
+                    input(type='text' id='rentOtherZipCity' name='rentOtherZipCity' class='form-control' disabled)      
+            div(class='form-group col-md-12 formSubmit')
+              button(type='submit' id='rentSubmit' class='btn btn-lg btn-action') Wypożycz  
+  script(src='/javascript/validation.js')
+  script.
+    $(function(){
+      $('#startDate, #endDate').datetimepicker({
+      locale: 'pl',
+      icons: {
+         time: 'fa fa-clock-o',
+         date: 'fa fa-calendar',
+      },
+      defaultDate: moment()
+      });
+    });

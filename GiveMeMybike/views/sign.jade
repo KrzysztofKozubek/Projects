@@ -1,0 +1,80 @@
+extends layout
+
+
+block content
+  include main_image.jade
+  a(name='sign')
+  if login_error != ""
+    div(class='alert alert-danger text-center')
+      strong ERROR! #{login_error}
+  div(id='signBox' class='container-fluid')
+    div(class='row container-spaces')
+      section(id='signUp' class='col-md-6')
+        h2 Zarejestruj się
+        form(id='SignUpForm' class='row' method='POST' action='/sign/signup')
+          div(class='form-group col-md-6')
+            label(for='registerName') Imię 
+              span.text-red * 
+            input(type='text' id='registerName' name='registerName' class='form-control') 
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group col-md-6')
+            label(for='registerSurname') Nazwisko 
+              span.text-red * 
+            input(type='text' id='registerSurname' name='registerSurname' class='form-control')
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group col-md-6')
+            label(for='registerPassword') Hasło 
+              span.text-red * 
+            input(type='password' id='registerPassword' name='registerPassword' class='form-control')          
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group col-md-6')
+            label(for='registerEmail') Email 
+              span.text-red * 
+            input(type='email' id='registerEmail' name='registerEmail' class='form-control')   
+            .form-error
+              span.default-error Podaj poprawne dane  
+              span.email-error Email jest zajęty
+          div(class='form-group col-md-12')
+            label(for='registerPhone') Telefon 
+              span.text-red * 
+            input(type='text' id='registerPhone' name='registerPhone' class='form-control')          
+            .form-error
+              span.default-error Podaj poprawne dane
+              span.phone-error Numer jest już w systemie 
+          div(class='form-group col-md-12')
+            label(for='registerAddress') Ulica, numer domu/mieszkania 
+              span.text-red * 
+            input(type='text' id='registerAddress' name='registerAddress' class='form-control')          
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group col-md-12')
+            label(for='registerZipCity') Kod pocztowy i miejscowość 
+              span.text-red * 
+            input(type='text' id='registerZipCity' name='registerZipCity' class='form-control')      
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group col-md-12 formSubmit')
+            button(type='submit' id='signUpSubmit' class='btn btn-lg btn-action') Zarejestruj  
+      section(id='signIn' class='col-md-6')
+        h2 Zaloguj się
+        small (DEMO login: testowo@test.com, password: test123)
+        form(id='SignInForm' class='row' method='POST' action='/sign/signin')
+          div(class='form-group col-md-12')
+            label(for='signInName') Email / numer telefonu
+            input(type='text' id='signInName' name='signInName' class='form-control')          
+          div(class='form-group col-md-12')
+            label(for='signInPassword') Hasło
+            input(type='password' id='signInPassword' name='signInPassword' class='form-control')
+          div(class='form-group col-md-12 formSubmit')
+            span(href='#' class='form-control-static ')
+            button(type='submit' id='signInSubmit' class='btn btn-lg btn-action') Zaloguj
+  script(src='/javascript/validation.js')          
+  script(src='/javascript/sign.js')          
+
+
+
+
+

@@ -1,0 +1,49 @@
+﻿  main.cpp
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(18): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(73): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(87): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(216): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(217): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(218): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(219): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(220): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(221): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(222): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(223): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(224): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(225): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(227): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(228): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(229): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(230): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(231): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(232): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(233): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(234): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(235): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(236): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(237): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(238): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(239): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(240): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(242): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(243): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(244): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(245): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(246): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(247): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\Recognition.h(248): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(91): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(99): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(114): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(191): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(459): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(460): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\zaliczeniero\zaliczeniero\PreProcessing.h(497): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+  Generating code
+  All 582 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ZaliczenieRO.vcxproj -> E:\Programs\C++\ZaliczenieRO\x64\Release\ZaliczenieRO.exe
+  ZaliczenieRO.vcxproj -> E:\Programs\C++\ZaliczenieRO\x64\Release\ZaliczenieRO.pdb (Full PDB)

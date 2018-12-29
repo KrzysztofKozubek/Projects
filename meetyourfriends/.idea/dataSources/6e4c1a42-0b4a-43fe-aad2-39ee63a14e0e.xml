@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - ciesla@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="ciesla">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="cryptojackscoin"/>
+    <schema id="3" name="id1163805_meetyourfriends"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="movie"/>
+    <schema id="6" name="moviecopy"/>
+    <schema id="7" name="mysql"/>
+    <schema id="8" name="performance_schema"/>
+    <schema id="9" name="phpmyadmin"/>
+    <schema id="10" name="poloniex"/>
+    <schema id="11" name="test"/>
+    <schema id="12" name="tmp"/>
+    <table id="13" parent="1" name="circle"/>
+    <table id="14" parent="1" name="friend"/>
+    <table id="15" parent="1" name="friendcircle"/>
+    <table id="16" parent="1" name="likes"/>
+    <table id="17" parent="1" name="login"/>
+    <table id="18" parent="1" name="person"/>
+    <table id="19" parent="1" name="timeline"/>
+    <table id="20" parent="1" name="user"/>
+    <routine id="21" parent="1" name="p_addCircle">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="22" parent="1" name="p_addFriend">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="23" parent="1" name="p_addPost">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="24" parent="1" name="p_addUserToCircle">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="25" parent="1" name="p_allFriends">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="26" parent="1" name="p_amountLikes">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="27" parent="1" name="p_checkFriend">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="28" parent="1" name="p_confirmFriend">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="29" parent="1" name="p_deletePost">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="30" parent="1" name="p_editPost">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="31" parent="1" name="p_editProfile">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="32" parent="1" name="p_getInformationProfile">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="33" parent="1" name="p_getLogs">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="34" parent="1" name="p_getUserPosts">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="35" parent="1" name="p_getWall">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="36" parent="1" name="p_likePost">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="37" parent="1" name="p_login">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="38" parent="1" name="p_registration">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="39" parent="1" name="p_removeFriend">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="40" parent="1" name="p_removePost">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="41" parent="1" name="p_searchUser">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="42" parent="1" name="p_showProfile">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <routine id="43" parent="1" name="p_wall">
+      <routine-kind>PROCEDURE</routine-kind>
+    </routine>
+    <column id="44" parent="13" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="45" parent="13" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="46" parent="13" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="47" parent="13" name="date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="48" parent="13" name="activer">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <key id="49" parent="13" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="50" parent="14" name="IDUsertSendReq">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="51" parent="14" name="IDReciver">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="52" parent="14" name="dateSend">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="53" parent="14" name="confirmed">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <column id="54" parent="14" name="dateConfirmed">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="55" parent="14" name="IDReciver">
+      <columns>IDReciver</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="56" parent="14" name="IDUsertSendReq">
+      <columns>IDUsertSendReq</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <column id="57" parent="15" name="IDUser">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="58" parent="15" name="IDCircle">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="59" parent="15" name="IDUserAdded">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="60" parent="15" name="date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="61" parent="15" name="active">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <index id="62" parent="15" name="IDCircle">
+      <columns>IDCircle</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="63" parent="15" name="IDGroup">
+      <columns>IDCircle</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="64" parent="15" name="IDUser">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="65" parent="15" name="IDUserAdded">
+      <columns>IDUserAdded</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="66" parent="15" name="IDUserAdded_2">
+      <columns>IDUserAdded</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="67" parent="15" name="IDUser_2">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <column id="68" parent="16" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="69" parent="16" name="IDUser">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="70" parent="16" name="IDPost">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="71" parent="16" name="IDPost">
+      <columns>IDPost</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="72" parent="16" name="IDUser">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="73" parent="16" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="74" parent="17" name="IDUser">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="75" parent="17" name="IP">
+      <mandatory>1</mandatory>
+      <data-type>varchar(16)|0</data-type>
+    </column>
+    <column id="76" parent="17" name="date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="77" parent="17" name="IDUser">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <column id="78" parent="18" name="IDUser">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="79" parent="18" name="firstname">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="80" parent="18" name="surename">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="81" parent="18" name="birthdate">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="82" parent="18" name="active">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <column id="83" parent="18" name="date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="84" parent="18" name="activeChange">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <index id="85" parent="18" name="IDUser">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <column id="86" parent="19" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="87" parent="19" name="IDUser">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="88" parent="19" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(1000)|0</data-type>
+    </column>
+    <column id="89" parent="19" name="datePost">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="90" parent="19" name="privatePolicy">
+      <comment>1=only me|2=friends|3=public</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="91" parent="19" name="active">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <column id="92" parent="19" name="dateCreate">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="93" parent="19" name="ID">
+      <columns>ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="94" parent="19" name="IDUser">
+      <columns>IDUser</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <column id="95" parent="20" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="96" parent="20" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="97" parent="20" name="password">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="98" parent="20" name="active">
+      <mandatory>1</mandatory>
+      <data-type>int(1)|0</data-type>
+    </column>
+    <column id="99" parent="20" name="date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="100" parent="20" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <argument id="101" parent="21" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="102" parent="21" name="_name">
+      <direction>IN</direction>
+      <data-type>varchar(255)|0</data-type>
+    </argument>
+    <argument id="103" parent="21" name="_description">
+      <direction>IN</direction>
+      <data-type>varchar(255)|0</data-type>
+    </argument>
+    <argument id="104" parent="22" name="_IDMyUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="105" parent="22" name="_IDCheckUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="106" parent="23" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="107" parent="23" name="_description">
+      <direction>IN</direction>
+      <data-type>varchar(1000)|0</data-type>
+    </argument>
+    <argument id="108" parent="23" name="_priavtePolicy">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="109" parent="24" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="110" parent="24" name="_IDCircle">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="111" parent="24" name="_IDaddingUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="112" parent="25" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="113" parent="26" name="_IDPost">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="114" parent="27" name="_IDMyUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="115" parent="27" name="_IDCheckUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="116" parent="28" name="_IDMyUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="117" parent="28" name="_IDCheckUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="118" parent="29" name="_idUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="119" parent="29" name="_idPost">
+      <direction>IN</direction>
+      <data-type>int(100)|0</data-type>
+    </argument>
+    <argument id="120" parent="30" name="_IDPost">
+      <direction>IN</direction>
+      <data-type>int(100)|0</data-type>
+    </argument>
+    <argument id="121" parent="30" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="122" parent="30" name="_description">
+      <direction>IN</direction>
+      <data-type>varchar(1000)|0</data-type>
+    </argument>
+    <argument id="123" parent="30" name="_policy">
+      <direction>IN</direction>
+      <data-type>int(5)|0</data-type>
+    </argument>
+    <argument id="124" parent="30" name="_datePost">
+      <direction>IN</direction>
+      <data-type>varchar(20)|0</data-type>
+    </argument>
+    <argument id="125" parent="31" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="126" parent="31" name="_firstname">
+      <direction>IN</direction>
+      <data-type>varchar(50)|0</data-type>
+    </argument>
+    <argument id="127" parent="31" name="_surename">
+      <direction>IN</direction>
+      <data-type>varchar(50)|0</data-type>
+    </argument>
+    <argument id="128" parent="31" name="_birthDate">
+      <direction>IN</direction>
+      <data-type>date|0</data-type>
+    </argument>
+    <argument id="129" parent="31" name="_password">
+      <direction>IN</direction>
+      <data-type>varchar(50)|0</data-type>
+    </argument>
+    <argument id="130" parent="32" name="_ID">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="131" parent="33" name="_idUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="132" parent="34" name="_idUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="133" parent="35" name="_idUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="134" parent="36" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+    <argument id="135" parent="36" name="_IDPost">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="136" parent="37" name="_email">
+      <direction>IN</direction>
+      <data-type>varchar(255)|0</data-type>
+    </argument>
+    <argument id="137" parent="37" name="_password">
+      <direction>IN</direction>
+      <data-type>char(128)|0</data-type>
+    </argument>
+    <argument id="138" parent="37" name="_IP">
+      <direction>IN</direction>
+      <data-type>varchar(16)|0</data-type>
+    </argument>
+    <argument id="139" parent="38" name="_name">
+      <direction>IN</direction>
+      <data-type>varchar(50)|0</data-type>
+    </argument>
+    <argument id="140" parent="38" name="_surname">
+      <direction>IN</direction>
+      <data-type>varchar(50)|0</data-type>
+    </argument>
+    <argument id="141" parent="38" name="_dateBirth">
+      <direction>IN</direction>
+      <data-type>date|0</data-type>
+    </argument>
+    <argument id="142" parent="38" name="_email">
+      <direction>IN</direction>
+      <data-type>varchar(255)|0</data-type>
+    </argument>
+    <argument id="143" parent="38" name="_password">
+      <direction>IN</direction>
+      <data-type>char(128)|0</data-type>
+    </argument>
+    <argument id="144" parent="39" name="_IDMyUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="145" parent="39" name="_IDCheckUser">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="146" parent="40" name="_IDPost">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="147" parent="41" name="_search">
+      <direction>IN</direction>
+      <data-type>varchar(255)|0</data-type>
+    </argument>
+    <argument id="148" parent="42" name="_idProfile">
+      <direction>IN</direction>
+      <data-type>int(11)|0</data-type>
+    </argument>
+    <argument id="149" parent="43" name="_IDUser">
+      <direction>IN</direction>
+      <data-type>int(10)|0</data-type>
+    </argument>
+  </database-model>
+</dataSource>

@@ -1,0 +1,41 @@
+/* library OpenCV */
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+/* library VS */
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+
+/* My Class */
+#include "PreProcessing.h"
+#include "Windows.h"
+
+using namespace cv;
+using namespace std;
+
+int main(int argc, char ** argv) {
+
+	vector<string> images = CWindows::getListFileFrom("digits\\");
+	vector<Mat> tmp;
+	vector<Mat> result;
+
+	CPreProcessing* pp;
+	Mat image;
+	for (int i = 0; i < argc; i++) {
+		image = imread(string(argv[i]);
+
+		pp = new CPreProcessing(image);
+		pp->preProcessing(image);
+
+		tmp = pp->findSign(pp->getImage());
+		for each(Mat varr in tmp) {
+			result.push_back(varr.clone());
+		}
+	}
+
+	CRecognition* r = new CRecognition(result);
+	r->createFileOfMoments();
+}

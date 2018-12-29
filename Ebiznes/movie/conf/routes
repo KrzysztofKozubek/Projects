@@ -1,0 +1,46 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           @controllers.Application.index
+
+#API Movie
+GET     /api/movie/                 @controllers.MovieController.apiGetAll
+GET     /api/movie/:id/             @controllers.MovieController.apiMovie(id: Long)
+POST    /api/movie/                 @controllers.MovieController.apiNewMovie
+DELETE  /api/movie/:id/             @controllers.MovieController.apiDeleteMovie(id: Long)
+PUT     /api/movie/                 @controllers.MovieController.apiUpdateMovie
+
+GET     /api/search/:search/:genre/:site/   @controllers.MovieController.apiSearch(search: String, genre: String, site: Int)
+GET     /api/search/:search//:site/         @controllers.MovieController.apiSearchBySearch(search: String, site: Int)
+GET     /api/search//:genre/:site/          @controllers.MovieController.apiSearchByGenre(genre: String, site: Int)
+GET     /api/search///:site/                @controllers.MovieController.apiSearchBySite(site: Int)
+
+GET     /api/movies/:id/            @controllers.MovieController.apiMovies(id: Long)
+GET     /api/genres/                @controllers.MovieController.apiGetGenres
+
+#API Cart
+GET     /api/cart/:id/              @controllers.CartController.apiGetById(id)
+POST    /api/cart/                  @controllers.CartController.apiNewCart
+DELETE  /api/cart/:id/              @controllers.CartController.apiDeleteCart(id: Long)
+DELETE  /api/carts/:id/             @controllers.CartController.apiDeleteCartById(id: String)
+
+#API Order
+GET     /api/order/                 @controllers.OrderController.apiGetAll
+POST    /api/order/                 @controllers.OrderController.apiNewOrder
+DELETE  /api/order/:id/             @controllers.OrderController.apiDeleteOrder(id: Long)
+
+#User
+GET     /user/:id                   @controllers.UserController.getByIdUser(id)
+GET     /registereduser/            @controllers.UserController.getAll
+DELETE  /registereduser/:id/        @controllers.UserController.deleteUser(id)
+
+#Authenticate
+GET     /authenticate/:provider     controllers.SocialAuthController.authenticate(provider)
+POST    /authenticate/:provider     controllers.SocialAuthController.authenticate(provider)
+GET     /getLoggedUser              controllers.SocialAuthController.getLoggedUser
+GET     /logout                     controllers.SocialAuthController.logoutUser
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

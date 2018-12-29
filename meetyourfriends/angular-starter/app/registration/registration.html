@@ -1,0 +1,46 @@
+<toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-success': 2000, 'toast-warning': 2000, 'toast-error': 2000 } }"></toaster-container>
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form" validate>
+			<h2>Please Sign Up</h2>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" ng-model="registrationCtrl.first_name" required>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" ng-model="registrationCtrl.last_name" required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<md-datepicker placeholder="Birth date" name="birth_date" id="birth_date" class="form-control input-lg" tabindex="2" ng-model="registrationCtrl.birth_date" required></md-datepicker>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" ng-model="registrationCtrl.email" required>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" ng-model="registrationCtrl.password" required>
+					</div>
+				</div>
+			</div>	
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="center-block"><input type="submit" value="Register" class="btn btn-full btn-secondary btn-lg" ng-click="registrationCtrl.registry()" tabindex="7"></div>
+			</div>
+			<div class="center-block login"><a ui-sref="login">or if you have an account, login!</a></div>
+		</form>
+	</div>
+</div>
+</div>

@@ -1,0 +1,62 @@
+<!-- Informaion-->
+<div id="intro" class="section scrollspy">
+  <section class="container">
+    <dt class="row">
+      <article class="col s12 m4 l4">
+        <section class="center promo promo-example">
+
+          <div class="nav-wrapper">
+            <div class="input-field">
+              <input id="search-example" type="search" required=""
+                     (keyup)="searchMovie($event, search, site)"/>
+            </div>
+          </div>
+
+          <ul id="dropdown1" class="dropdown-content">
+            <li>
+              <a (click)="changeGenres('')">all<span class="badge">all</span></a>
+            </li>
+            <li *ngFor="let genre of genres" value="{{genre.genre}}">
+              <a (click)="changeGenres(genre.genre)">{{genre.genre}}<span class="badge"></span></a>
+            </li>
+          </ul>
+          <a data-activates="dropdown1" class="btn dropdown-button">
+            Kategoria<i class="right"></i>
+          </a>
+
+        </section>
+      </article>
+    </dt>
+  </section>
+</div>
+
+<div id="work" class="section scrollspy">
+  <section class="container">
+    <dt class="row">
+      <section class="col s12 m4 l4" *ngFor="let movie of movies">
+        <article class="card">
+          <div class="card-image waves-effect waves-block waves-light"><img src="{{movie.poster}}" class="activator"/></div>
+          <div class="card-content"><span class="rolling card-title activator grey-text text-darken-4">{{movie.title}}</span></div>
+          <div class="card-reveal"><span class="card-title grey-text text-darken-4">{{movie.title}}<i class="mdi-navigation-close right"></i></span>
+            <p>{{movie.description}}</p>
+            <p>Gatunek: {{movie.genre}}</p>
+            <p>Premiera: {{movie.releaseDate}}</p>
+            <p>Ocena: {{movie.mark}}</p>
+            <p>Dłygość: {{movie.length}}min</p>
+            <p>Cena: {{movie.price}} PLN</p>
+            <p><i class="medium material-icons" (click)="onClickCart(movie)" *ngIf="this.cart.idUser">add</i></p>
+          </div>
+        </article>
+      </section>
+    </dt>
+  </section>
+</div>
+
+<div class="text-center center-align">
+    <a class="btn btn-floating btn-large cyan pulse" (click)="onClickMe(prev)" [routerLink]="['/movies/', {site: prev}]" >
+      <i class="material-icons">fast_rewind</i>
+    </a>
+    <a class="btn btn-floating btn-large cyan pulse" (click)="onClickMe(next)" [routerLink]="['/movies/', {site: next}]" >
+      <i class="material-icons">fast_forward</i>
+    </a>
+</div>

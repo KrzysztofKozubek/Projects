@@ -1,0 +1,42 @@
+.row
+  div(class='col-md-12')
+    h4 #{modal.OrderUniqueName}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') typ roweru :
+      div(class='col-md-9')
+        p #{modal.OrderBikeType}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Rodzaj usługi :
+      div(class='col-md-9')
+        p #{modal.OrderServiceType}
+  div(class='col-md-12')
+    div(class='row')      
+      div(class='col-md-3')
+        p(class='details-label') Data odbioru :
+      div(class='col-md-9')
+        p #{modal.OrderDateStart}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Data oddania (opcjonalnie):
+      div(class='col-md-9')
+        p #{modal.OrderDateEnd}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Preferencje:
+      div(class='col-md-9')
+        p 
+          for val in modal.OrderPreferences
+            |#{val}
+            br
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Odbiór przez inną osobę (opcjonalnie):
+      div(class='col-md-9')
+        p #{modal.OrderOtherUserID}

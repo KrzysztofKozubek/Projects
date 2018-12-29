@@ -1,0 +1,42 @@
+extends layout
+block content
+  include main_image
+  div(id='page' class='container-fluid')
+    div(class='row container-spaces')
+      div(class='pageHeader col-md-12 text-center')
+        h1 Wypożycz rower w jednym z wielu sklepów w Polsce !
+      div(id='rentMap' class='col-md-12')
+      div(class='pageFooter text-center col-md-12')
+        h1
+          span(class='text-red') Pamiętaj!
+          |  Możesz wypożyczyć rower w jednym miejscu, a oddać w innym
+    script.
+      var places = !{JSON.stringify(places)};
+      console.log(places);
+      function initMap() {
+        var myLatLng = {lat: 51.919438, lng: 19.145136};
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('rentMap'), {
+          center: myLatLng,
+          scrollwheel: false,
+          zoom: 8
+        });
+
+        // Create a marker and set its position.
+        var infowindow = [];
+        for(var i=0; i < places.length; i++) {
+          var marker = new google.maps.Marker({ map: map, position: {lat: parseFloat(places[i].PlaceCoordinates[0]), lng: parseFloat(places[i].PlaceCoordinates[1])}, title: places[i].City });
+          infowindow[i] = places[i].PlaceName+', '+places[i].PlaceAddress;
+          attachMessage(marker, infowindow[i]);
+        }
+        function attachMessage(marker, message) {
+          var infowindow = new google.maps.InfoWindow({
+            content: message
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(marker.get('map'), marker);
+          });
+        }
+      }
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyNfGBL-AjACM3sZXn4wZar9yHLqokpng&callback=initMap")

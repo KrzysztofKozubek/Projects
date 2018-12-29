@@ -1,0 +1,77 @@
+extends layout
+
+
+block content
+  include main_image.jade
+  section(id='mainSlogans' class='container-fluid')
+    div(class='row container-spaces')
+      div(class='col-md-3')
+        div(class='sloganImage')
+          i(class='fa fa-sign-in')
+        h2 Szybka Rejestracja
+        h5 Zostań członkiem naszej społeczności w 2 minuty
+      div(class='col-md-3')
+        div(class='sloganImage')
+          i(class='fa fa-retweet')
+        h2 Łatwe wypożyczanie
+        h5 Szeroka gama wypożyczalni w największych miastach Polski!
+      div(class='col-md-3')
+        div(class='sloganImage')
+          i(class='fa fa-usd')
+        h2 Atrakcyjne ceny
+        h5 Wypożyczenie roweru na godzinę kosztuję cię tylko
+          span(class='text-red')  1zł
+          |!
+      div(class='col-md-3')
+        div(class='sloganImage')
+          i(class='fa fa-smile-o')
+        h2 Przyjazny interfejs
+        h5 rezerwacji roweru możesz dokonać w kilku prostych krokach!
+  article(id="companyDescription" class="container-fluid")
+    div(class='row container-spaces')
+      div(class='companyImage col-lg-5')
+        img(src='/images/bikedesc.jpg')
+      div(class='companyDesc col-lg-7')
+        h1 Czym jest GiveMeMyBike ?
+        p GiveMeMyBike to nowoczesna platforma wypożyczania rowerów. System umożliwia szybkie i bezobsługowe wypożyczanie jednośladów specjalnie zaprojektowanych do wygodnego poruszania się po mieście. Rower możesz wypożyczyć i zwrócić na dowolnej stacji, jest to więc idealne rozwiązanie na przejazdy „w jedną stronę”...
+  section(id="reviews" class='container-fluid')
+    div(class='row container-spaces')
+      h2 
+        span(class='text-red') Setki 
+        | zadowolonych klientów!
+      div(class='review-box col-lg-4')
+        div(class='review-desc')
+          header 
+            strong Przemek Wolny
+            div(class='review-stars')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star-o')
+          p Odwiedzilem Krakow na weekend i postanowilem skorzystac z roweru miejskiego. Mysle ze 95% turystow po podjetej decyzji chce jak najszybciej usiasc na rowerze. Przedplata 29 zeta i jazda. Godzinka wystarczy, zwrot roweru i nagle okazuje sie, ze jakakolwiek wplata na system jest bezzwrotna. Odradzam korzystanie z systemu w ktorym nie ma mowy o oplacie za wejscie a wszedzie reklamuje sie jedynie cene za minute uzytkowania..
+      div(class='review-box col-lg-4')
+        div(class='review-desc')
+          header 
+            strong Asia Ziajka
+            div(class='review-stars')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+          p W Krakowie 19gr/min, ale po wejściu w cennik jest 10gr/min. Nie ma darmowych minut. W Warszawie pierwsze 20minut 0zł do godziny 1zł. W Lublinie, Białymstoku też podobnie - nie sprawdzałem w innych miastach, ale wychodzi na to że tylko w Krakowie urzędasy podpisały chorą umowę.
+      div(class='review-box col-lg-4')
+        div(class='review-desc')
+          header 
+            strong Wojciech Morak
+            div(class='review-stars') 
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+              i(class='fa fa-star')
+          p Jestem z Lublina gdzie mamy fajny system. 20 minut darmo. Miasto Lublin nic nie dokłada do systemu rowerowego miesięcznie, zainwestowało tylko na początku w stacje i infrastrukturę. Jezdze do Krakowa sporadycznie ale widzę ze pieniazki ze starego systemu trzeba wypłacić. Jeszcze takiego kwasu z opłatami nie spotkałem.
+  div(id="contact")
+    h1 Masz problem? Wątpliwości?
+    a(href='/contact' class='btn btn-lg btn-action') Skontaktuj się z nami

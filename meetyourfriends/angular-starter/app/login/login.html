@@ -1,0 +1,29 @@
+<div class="container">
+    <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-success': 2000, 'toast-warning': 2000, 'toast-error': 2000 } }"></toaster-container>
+    <hr class="colorgraph">
+    <div class="row">
+        <div class="col-md-12 center-block">
+            <img class="img-responsive center-block img-resize" src="../img/Meet-Your-Friends.png">
+            <div class="page-subheader">
+                <h2>and share your experiences</h2>
+            </div>
+            <form class="form-horizontal" validate>
+                <div class="col-xs-4 col-xs-offset-4 column">
+                    <div class="form-group">
+                            <input type="email" class="form-control input-lg" id="email" placeholder="Email" ng-model="loginCtrl.email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" id="password" placeholder="Password" ng-model="loginCtrl.password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-full btn-lg" ng-click="loginCtrl.login()">login</button>
+                    </div>
+                </div>
+            </form>
+            <div class="registry col-xs-4 col-xs-offset-4 column">
+                <p><a ui-sref="registration">don't have an account?</a></p>
+            </div>
+        </div>
+    </div>
+    <hr class="colorgraph">
+</div>

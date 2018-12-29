@@ -1,0 +1,87 @@
+doctype html
+html(lang='pl')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //main scripts
+    script(type='text/javascript', src='/partial/jquery/jquery.min.js')
+    script(type='text/javascript', src='/javascript/actions.js')
+    script(type='text/javascript', src='/javascript/client_actions.js')
+    script(type='text/javascript', src='/javascript/validation.js' )
+
+
+    //additional scripts
+    script(type='text/javascript', src='/partial/bootstrap/dist/js/bootstrap.min.js')
+    script(type='text/javascript', src='/partial/moment/moment.min.js')
+    script(type='text/javascript', src='/partial/moment/pl.js')
+    script(type='text/javascript', src='/partial/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js')
+
+    //main styles
+    link(rel='stylesheet', href='/stylesheet/style.css')
+
+    //additional styles
+    link(rel='stylesheet', href='/partial/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/partial/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/partial/font-awesome/css/font-awesome.min.css')
+
+    link(rel='Shortcut icon', href='/images/icons.png')
+
+  body
+    div(class='wrapper')
+      header(id='pageHeader')
+        div(class='row container-spaces')
+          div(class='headerLogo col-xs-3 col-md-2')
+            a(href='/', title='Strona główna')
+              img(src='/images/logo.png')
+          div(id='headerNavigation' class='col-xs-9 col-md-10')
+            nav
+              div(id='menu-small')
+                a(href='#')
+                  i(class='fa fa-bars')
+              mixin link(name, href)
+                li
+                  if pageName === href
+                    a(class!=attributes.class+' active-page' href=href title=name)=name
+                  else
+                    a(class!=attributes.class href=href title=name)=name    
+              ul()
+                +link('Wypożyczalnie', '/rentals#content')
+                +link('Cennik', '/prices#content')
+                +link('Kontakt', '/contact#content')
+                each val in clientLink
+                  +link(val[0], val[1])
+      div(class='containerContent')
+        block content
+    footer(id='pageFooter' class='container-fluid')
+      div(class='row container-spaces')
+        div(class='col-md-3 footer-block')
+          address
+            h3 Kontakt 
+            p
+              strong GiveMeMyBike SP.J. #{userName}
+              br
+              | ul. Łojasiewicza 11
+              | 30-348 Kraków
+        div(class='col-md-3 footer-block')
+          h3 Statystyki
+          p Klientów obecnie: 
+            strong 3248 
+            br
+            | Suma wypożyczeń:   
+            strong 8483 
+
+        div(class='col-md-6')
+          h3 Subskrybuj serwis
+          form(id='subscriptionForm' method='POST' action='/add_to_newsletter' class='form-inline')
+            div(class='form-group')
+              input(type='text' id="subscriptionEmail" name='subscriptionEmail' class='form-control' placeholder='wpisz swój email' autocomplete)
+              button(type='submit' class='btn btn-action') Zapisz się
+              .form-error
+                span.default-error Proszę wypełnić to pole poprawnymi danymi
+          span(class='subscriptionDetails')
+            | Otrzymasz informacje o zmianach w serwisie, nowych wycieczkach, etc.
+      div(class='row container-spaces copyrights')
+        div(class='col-xs-12')
+          span Copyrigths &copy; 2017. All Rights Reserved by Krzysztof Kozubek.

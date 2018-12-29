@@ -1,0 +1,10 @@
+input(id="disRating" type="hidden" class="rating" value='#{modalStars.StarsAvg}' disabled)
+address
+  h2 #{modal.PlaceName} 
+  | #{modal.PlaceAddress}
+  br
+  | #{modal.PlaceZipcode}, #{modal.PlaceCity}
+input(type='hidden' value='#{modal.PlaceID}' name='placeID')
+input(type='hidden' value='#{modal.OrderID}' name='orderID')
+script.
+  $('#disRating').rating({min:0, max:5, step:1,size:'sm', glyphicon: false, showCaption: false});

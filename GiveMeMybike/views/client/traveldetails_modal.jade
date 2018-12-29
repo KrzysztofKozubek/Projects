@@ -1,0 +1,33 @@
+.row
+  div(class='col-md-12')
+    h4 #{modal.TripName}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Czas trwania :
+      div(class='col-md-9')
+        p #{modal.TripDateStart} - #{modal.TripDateEnd}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Start
+      div(class='col-md-9')
+        p #{modal.TripStartPoint} 
+  div(class='col-md-12')
+    div(class='row')      
+      div(class='col-md-3')
+        p(class='details-label') Meta
+      div(class='col-md-9')
+        p #{modal.TripEndPoint} 
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Opis:
+      div(class='col-md-9')
+        p #{modal.TripDescription}
+  div(class='col-md-12')
+    div(class='row')
+      div(class='col-md-3')
+        p(class='details-label') Dodał:
+      div(class='col-md-9')
+        p #{modal.UserName} #{modal.UserSurname}

@@ -1,0 +1,9 @@
+div(class='table-responsive')
+  table(class='table table-styled')
+    thead
+      th
+        |Imię i nazwisko
+    tbody
+      each val in modal
+        tr
+          td #{val.UserName} #{val.UserSurname}

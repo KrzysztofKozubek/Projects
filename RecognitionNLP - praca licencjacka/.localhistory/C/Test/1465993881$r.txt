@@ -1,0 +1,45 @@
+Accuracy = 100% (3434/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+Accuracy = 99.9709% (3433/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+Accuracy = 99.9126% (3431/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+Accuracy = 99.5923% (3420/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+Accuracy = 99.3011% (3410/3434) (classification)
+Accuracy = 78.1818% (86/110) (classification)
+Accuracy = 99.0099% (3400/3434) (classification)
+Accuracy = 76.3636% (84/110) (classification)
+Accuracy = 96.3017% (3307/3434) (classification)
+Accuracy = 72.7273% (80/110) (classification)
+Accuracy = 79.5282% (2731/3434) (classification)
+Accuracy = 79.0909% (87/110) (classification)
+Accuracy = 72.8014% (2500/3434) (classification)
+Accuracy = 75.4545% (83/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 100000 
+Accuracy = 100% (3434/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 10000 
+Accuracy = 99.9709% (3433/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 1000 
+Accuracy = 99.9126% (3431/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 100 
+Accuracy = 99.5923% (3420/3434) (classification)
+Accuracy = 74.5455% (82/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 10 
+Accuracy = 99.3011% (3410/3434) (classification)
+Accuracy = 78.1818% (86/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 1 
+Accuracy = 99.0099% (3400/3434) (classification)
+Accuracy = 76.3636% (84/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 0.1 
+Accuracy = 96.3017% (3307/3434) (classification)
+Accuracy = 72.7273% (80/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 0.01 
+Accuracy = 79.5282% (2731/3434) (classification)
+Accuracy = 79.0909% (87/110) (classification)
+svm-train.exe -s %svm% -t %kernel% -c 0.001 
+Accuracy = 72.8014% (2500/3434) (classification)
+Accuracy = 75.4545% (83/110) (classification)

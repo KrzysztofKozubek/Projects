@@ -1,0 +1,79 @@
+extends ../layout
+block content
+  include client_box
+  div(class='clientContainer container-fluid')
+    div(class='row container-spaces')
+      div(class='clientContent clearfix pageContent')
+        div(class='contentHeader col-md-12')
+          h2 Edycja profilu
+         div(class='col-md-6 col-md-offset-3')
+          form(id="editProfileForm" class='row' method='POST' action='/client/profile')
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profileName' class='col-md-3') Imię
+                div(class='col-md-9')
+                  input(id='profileName' class='form-control' name='profileName' type='text' value='#{result.UserName}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi            
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profileSurname' class='col-md-3') Nazwisko
+                div(class='col-md-9')
+                  input(id='profileSurname' class='form-control' name='profileSurname' type='text' value='#{result.UserSurname}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profileEmail' class='col-md-3') Email
+                div(class='col-md-9')
+                  input(id='profileEmail' class='form-control' name='profileEmail' type='text' value='#{result.UserEmail}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+                    span.email-error Podany email istnieje już w bazie
+                  input(id='profileEmail_hidden' class='form-control' name='profileEmail_hidden' type='hidden' value='#{result.UserEmail}')
+
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profilePhone' class='col-md-3') Telefon
+                div(class='col-md-9')
+                  input(id='profilePhone' class='form-control' name='profilePhone' type='text' value='#{result.UserPhone}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+                    span.phone-error Podany telefon istnieje już w bazie
+                  input(id='profilePhone_hidden' class='form-control' name='profilePhone_hidden' type='hidden' value='#{result.UserPhone}')
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profileAddress' class='col-md-3') Ulica, nr mieszkania
+                div(class='col-md-9')
+                  input(id='profileAddress' class='form-control' name='profileAddress' type='text' value='#{result.UserAddress}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profileZipCity' class='col-md-3') Kod pocztowy, miasto
+                div(class='col-md-9')
+                  input(id='profileZipCity' class='form-control' name='profileZipCity' type='text' value='#{result.UserZipCity}')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+            div(class='form-group col-md-12 col-md-12 formSubmit')
+              button(type='submit' class='btn btn-lg btn-action') Edytuj  
+        div(class='contentHeader col-md-12')
+          h2 Zmień hasło
+         div(class='col-md-6 col-md-offset-3')
+          form(id="editPasswordForm" class='row' method='POST' action='/client/profile')
+            div(class='form-group col-md-12')
+              div(class='row')
+                label(for='profilePassword' class='col-md-3') Nowe hasło
+                div(class='col-md-9')
+                  input(id='profilePassword' class='form-control' name='profilePassword' type='password')
+                  .form-error
+                    span.default-error Proszę wypełnić to pole poprawnymi danymi
+            div(class='form-group col-md-12 col-md-12 formSubmit')
+              button(type='submit' class='btn btn-lg btn-action') Zmień 
+  script(src='/javascript/validation.js')          
+  script(src='/javascript/profile.js')   
+
+
+
+

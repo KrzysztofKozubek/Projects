@@ -1,0 +1,55 @@
+<table>
+  <thead>
+  <tr>
+    <th>Plakat</th>
+    <th>Tytuł</th>
+    <th>Cena</th>
+    <th>Usuń</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cart of carts">
+    <td><img src="{{cart.poster}}" style="width: 150px; height: 150px;"/></td>
+    <td>{{cart.title}}</td>
+    <td>{{cart.price}} PLN</td>
+    <td><button (click)="deleteCart(cart.id)" value="usun">usun</button></td>
+  </tr>
+  </tbody>
+</table>
+
+<hr class="row"/>
+
+<div class="row">
+  <form action="#">
+    <div class="row input-field col s6">
+      <input placeholder="Address" minlength="15" maxlength="100" id="Address" type="text" class="validate" required
+        (change)="clickAddress($event)">
+      <label for="Address">Address</label>
+    </div>
+    <p>
+      <input name="group1"  type="radio" id="test1" (click)="clickShipment(15)" checked/>
+      <label for="test1">DHL = 15 PLN</label>
+    </p>
+    <p>
+      <input name="group1" type="radio" id="test2" (click)="clickShipment(12)"/>
+      <label for="test2">Poczta Polska = 12 PLN</label>
+    </p>
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test3" (click)="clickShipment(9)"/>
+      <label for="test3">Paczkomat = 9 PLN</label>
+    </p>
+  </form>
+</div>
+
+<hr class="row"/>
+
+<div class="row">
+  <div class="input-field col s6">
+    <input disabled placeholder="Koszt całkowity" id="first_name" type="text" class="validate" value="{{cost}}">
+    <label for="Address">Koszt całkowity</label>
+  </div>
+</div>
+
+<button (click)="clickBuy()" class="btn waves-effect waves-light" type="submit" name="action">Kup
+  <i class="material-icons right">Kup</i>
+</button>

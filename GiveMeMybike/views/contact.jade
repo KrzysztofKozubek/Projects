@@ -1,0 +1,53 @@
+extends layout
+block content
+  include main_image
+  div(id='page' class='container-fluid')
+    div(class='row container-spaces')
+      div(class='pageHeader col-md-12')
+        h1 Kontakt
+      section(class='col-md-5')
+        div(id='contactMap')
+        address
+          h3 GiveMeMyBike SP.J.
+          p 
+            |ul. Łojasiewicza 11
+            br
+            |30-348 Kraków
+            br
+            |tel.: +48232344324
+            br
+            |email: pomoc(at)gmmb.pl
+      section(id='contactUs' class='col-md-6 col-md-offset-1')
+        h3 Formularz kontaktowy   
+        form(id='contactForm' action='/contact' method='POST')
+          div(class='form-group ')
+            label(for='contactName') Imię
+            input(type='text' id='contactName' name='contactName' class='form-control')
+            .form-error
+              span.default-error Podaj poprawne dane      
+          div(class='form-group ')
+            label(for='contactEmail') Twój email
+            input(type='email' id='contactEmail' name='contactEmail' class='form-control')   
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group')
+            label(for='contactText') Treść
+            textarea(id='contactText' name='contactText' rows='8' class='form-control')
+            .form-error
+              span.default-error Podaj poprawne dane  
+          div(class='form-group formSubmit')
+            button(type='submit' id='signUpSubmit' class='btn btn-lg btn-action') Wyślij  
+     
+  script.
+    function initMap() {
+      var myLatLng = {lat: 50.029117, lng: 19.903999};
+      var map = new google.maps.Map(document.getElementById('contactMap'), {
+        center: myLatLng,
+        scrollwheel: false,
+        zoom: 15
+      });
+      var marker = new google.maps.Marker({ map: map, position: myLatLng, title: 'siedziba firmy' });  
+    }
+  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK58z_d6M8QCRi-ANrlV_nrl-nJ4L4PUg&callback=initMap")
+  script(src="/javascript/validation.js")
+  script(src="/javascript/contact.js")

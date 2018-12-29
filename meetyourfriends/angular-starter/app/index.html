@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Meet your Friends</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+</head>
+<body ng-app="myApp" ng-cloak>
+
+<div ng-controller="AuthenticationController">
+    <div ui-view ng-cloak></div>
+</div>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-css/angular-css.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="app.js"></script>
+<script src="login/login.controller.js"></script>
+<script src="login/login.service.js"></script>
+<script src="profile/profile.controller.js"></script>
+<script src="profile/profile.service.js"></script>
+<script src="registration/registration.controller.js"></script>
+<script src="registration/registration.service.js"></script>
+<script src="authentication.controller.js"></script>
+<script src="profile/dialog.controller.js"></script>
+<script src="search/search.controller.js"></script>
+<script src="search/search.service.js"></script>
+<script src="profile/dialogEditPost.controller.js"></script>
+
+<script type="text/ng-template" id="dialogEditProfile.tmpl.html">
+    <md-dialog
+            aria-label="Edit your profile">
+        <form ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Edit your profile</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <i class="material-icons" aria-label="Close dialog">close</i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-input-container>
+                        <label>First name</label>
+                        <input required name="user.first_name" type="string"
+                               ng-model="user.first_name">
+                        <div ng-messages="edit.firstName.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Last name</label>
+                        <input required name="user.last_name" type="string"
+                               ng-model="user.last_name">
+                        <div ng-messages="edit.lastName.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Birth date</label>
+                        <input required name="user.birth_date" type="string"
+                               ng-model="user.birth_date">
+                        <div ng-messages="edit.birthDate.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Password</label>
+                        <input required name="user.password" type="password"
+                               ng-model="user.password">
+                        <div ng-messages="edit.password.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button ng-click="submit()">
+                    Save
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="dialogEditPost.tmpl.html">
+    <md-dialog flex
+            aria-label="Edit this post">
+        <form ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Edit post</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <i class="material-icons" aria-label="Close dialog">close</i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content flex>
+                <div class="md-dialog-content">
+                    <md-input-container class="md-block">
+                        <label>Post content</label>
+                        <textarea required name="postMessage" type="string"
+                                  ng-model="postMessage"></textarea>
+                        <div ng-messages="edit.message.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </md-dialog-content>
+
+
+            <md-dialog-actions layout="row">
+                <md-button ng-click="submit(postId)">
+                    Save
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-dialog>
+</script>
+
+</body>
+</html>

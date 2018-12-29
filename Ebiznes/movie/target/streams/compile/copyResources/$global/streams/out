@@ -1,0 +1,4 @@
+[debug] Copy resource mappings: 
+[debug] 	(F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\conf\application.conf,F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\target\scala-2.11\classes\application.conf)
+[debug] 	(F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\conf\routes,F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\target\scala-2.11\classes\routes)
+[debug] 	(F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\conf\silhouette.conf,F:\3.UJ(LICENCJAT)\SEMESTR VIII\Ebiznes\movie\target\scala-2.11\classes\silhouette.conf)

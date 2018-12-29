@@ -1,0 +1,35 @@
+<div class="col-sm-12">
+    <img src="../img/user.png" class="img-responsive center-block" alt="User Image" style="width: 40%">
+</div>
+
+<div class="col-sm-12">
+    <span>Birth date: {{ user.profile.birth_date }}</span>
+</div>
+<div class="col-sm-12" ng-hide="searchingUser">
+
+    <md-button class="md-icon-button" ng-click="profileCtrl.showDialog($event)">
+        <md-icon class="material-icons md-18 blue">mode_edit</md-icon>
+    </md-button>
+</div>
+<div class="col-sm-12" ng-show="searchingUser">
+    <md-button class="md-icon-button" ng-hide="isFriend" ng-click="profileCtrl.addFriend()">
+        <md-icon class="material-icons blue-friends">add_circle_outline</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-show="isFriend" ng-click="profileCtrl.deleteFriend()">
+        <md-icon class="material-icons blue-friends">remove_circle_outline</md-icon>
+    </md-button>
+</div>
+<div class="col-sm-12" layout-sm="column" layout-align="center center">
+    <md-button class="md-raised" ng-click="showFriends=true" ng-hide="showFriends">Show friends List</md-button>
+    <md-button class="md-raised" ng-click="showFriends=false" ng-show="showFriends" >Hide friends List</md-button>
+</div>
+
+    <md-list flex ng-show="showFriends">
+        <md-list-item ng-repeat="friend in  user.friends">
+            <img ng-src="../img/user.png" class="md-avatar img-responsive" alt="{{friend.first_name}}"/>
+            <div class="md-list-item-text" layout="column">
+                <p>{{ friend.first_name }} {{friend.last_name }}</p>
+            </div>
+        </md-list-item>
+    </md-list>
+

@@ -1,0 +1,72 @@
+extends layout
+
+
+block content
+  include main_image.jade
+  div(id='page' class='container-fluid')
+    div(class='row container-spaces')
+      div(class='pageHeader col-md-12')
+        h1 Cennik
+      div(class='col-md-8 col-md-offset-2')
+        table(class='table table-bordered row')
+          caption Tabela 1.1 Opłaty i kary w sezonie 2015
+          thead
+            tr
+              th(class='col-sm-8') Rodzaj Opłat i Kar
+              th(class='col-sm-4') Wartość Brutto
+          tbody
+            tr
+              td(class='col-sm-8') Opłata Inicjalna
+              td(class='col-sm-4') 20 PLN
+            tr
+              td(class='col-sm-8') Opłata za przekroczenie 12 godzin wypożyczenia
+              td(class='col-sm-4') 200 PLN
+            tr
+              td(class='col-sm-8') Powiadomienie listowne odnośnie naruszenia Regulaminu
+              td(class='col-sm-4') 10 PLN
+            tr
+              td(class='col-sm-8') Kradzież, utrata lub zniszczenie roweru
+              td(class='col-sm-4') 2000 PLN
+      div(class='col-md-8 col-md-offset-2')
+        table(class='table table-bordered row')
+          caption Tabela 1.2 Opłaty za wypożyczenie roweru (opłaty się sumują)
+          thead
+            tr
+              th(class='col-sm-8') Czas wypożyczenia
+              th(class='col-sm-4') Wartość Brutto
+          tbody
+            tr
+              td(class='col-sm-8') 1-40 minut
+              td(class='col-sm-4') 0 PLN
+            tr
+              td(class='col-sm-8') 41-60
+              td(class='col-sm-4') 2 PLN
+            tr
+              td(class='col-sm-8') 61-120
+              td(class='col-sm-4') 2 PLN
+            tr
+              td(class='col-sm-8') 121-180
+              td(class='col-sm-4') 3 PLN
+      div(class='col-md-8 col-md-offset-2')
+        table(class='table table-bordered row')
+          caption Tabela 1.2 Opłaty za rezerwację roweru (czas określony z góry)
+          thead
+            tr
+              th(class='col-sm-8') Czas rezerwacji
+              th(class='col-sm-4') Wartość Brutto
+          tbody
+            tr
+              td(class='col-sm-8') 6 godzin
+              td(class='col-sm-4') 10 PLN
+            tr
+              td(class='col-sm-8') 12 godzin
+              td(class='col-sm-4') 18 PLN
+            tr
+              td(class='col-sm-8') 24 godziny
+              td(class='col-sm-4') 24 PLN
+            tr
+              td(class='col-sm-8') 48 godzin
+              td(class='col-sm-4') 30 PLN            
+            tr
+              td(class='col-sm-8') Za każde 2 godziny opóźnienia
+              td(class='col-sm-4') 3 PLN

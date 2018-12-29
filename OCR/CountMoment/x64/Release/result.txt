@@ -1,0 +1,4 @@
+Usage: svm-predict [options] test_file model_file output_file
+options:
+-b probability_estimates: whether to predict probability estimates, 0 or 1 (default 0); for one-class SVM only 0 is supported
+-q : quiet mode (no outputs)

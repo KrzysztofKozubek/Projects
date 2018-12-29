@@ -1,0 +1,27 @@
+.modal.fade(role='dialog' id='payModal' aria-labelledby='#payModal')
+    .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            |         
+            h4#gridSystemModalLabel.modal-title Doładuj konto
+          |       
+          .modal-body
+            form.row(id='clientPayForm' method='POST' action='/client/payments')
+              .form-group.col-md-12
+                label(for='clientName') Imię i nazwisko
+                input#clientName.form-control(type='text' name='clientName' value='#{personalData.UserName} #{personalData.UserSurname}' disabled)
+              .form-group.col-md-12
+                label(for='clientPayment') Kwota do wpłaty
+                input#clientPayment.form-control(type='number' name='clientPayment' value='')
+                .form-error
+                  span.default-error Proszę wypełnić to pole poprawnymi danymi
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Anuluj
+            |         
+            button.btn.btn-action(id='paySubmit' type='submit') Doładuj
+        // /.modal-content
+      // /.modal-dialog
+    // /.modal
+    script(src='/javascript/validation.js')

@@ -1,0 +1,26 @@
+// my_mixins.scss
+// ----------------------- 
+// Copyright 2014
+// Author: Krzysztof Kozubek
+//--------------------------------
+
+@mixin font-face($fontName,$fontPrefix: ""){
+  $dir: '../';
+  
+  @font-face {
+    font-family: #{$fontName};
+    src: url('#{$dir}fonts/#{$fontName}#{$fontPrefix}.eot');
+    src: url('#{$dir}fonts/#{$fontName}#{$fontPrefix}.eot?#iefix') format('embedded-opentype'),
+         url('#{$dir}fonts/#{$fontName}#{$fontPrefix}.woff') format('woff'),
+         url('#{$dir}fonts/#{$fontName}#{$fontPrefix}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+  }  
+}
+
+//@mixin placeholder-color($class, $color,){
+//  #{$class}::-ms-input-placeholder, #{$class}:-ms-input-placeholder, #{$class}::-webkit-input-placeholder, #{$class}::-moz-placeholder { 
+//    color: $color;
+//  }
+//}

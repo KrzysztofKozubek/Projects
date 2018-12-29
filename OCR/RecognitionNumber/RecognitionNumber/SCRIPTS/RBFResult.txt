@@ -1,0 +1,54 @@
+Cross Validation Accuracy = 47.1%
+Kernel = RBF, Test = I, C = 1, g = 0.03125: 
+Accuracy = 50% (25/50) (classification)
+Cross Validation Accuracy = 55.9%
+Kernel = RBF, Test = I, C = 1, g = 0.0625: 
+Accuracy = 52% (26/50) (classification)
+Cross Validation Accuracy = 47.2%
+Kernel = RBF, Test = I, C = 2, g = 0.015625: 
+Accuracy = 50% (25/50) (classification)
+Cross Validation Accuracy = 55.95%
+Kernel = RBF, Test = I, C = 2, g = 0.03125: 
+Accuracy = 56% (28/50) (classification)
+Cross Validation Accuracy = 47.2%
+Kernel = RBF, Test = I, C = 4, g = 0.0078125: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 55.7%
+Kernel = RBF, Test = I, C = 4, g = 0.015625: 
+Accuracy = 56% (28/50) (classification)
+Cross Validation Accuracy = 55.65%
+Kernel = RBF, Test = I, C = 8, g = 0.0078125: 
+Accuracy = 56% (28/50) (classification)
+Cross Validation Accuracy = 71.3%
+Kernel = RBF, Test = I, C = 8, g = 0.0625: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 46.95%
+Kernel = RBF, Test = I, C = 16, g = 0.00195313: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 55.4%
+Kernel = RBF, Test = I, C = 16, g = 0.00390625: 
+Accuracy = 54% (27/50) (classification)
+Cross Validation Accuracy = 73.75%
+Kernel = RBF, Test = I, C = 16, g = 0.0625: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 55.35%
+Kernel = RBF, Test = I, C = 32, g = 0.00195313: 
+Accuracy = 52% (26/50) (classification)
+Cross Validation Accuracy = 73.5%
+Kernel = RBF, Test = I, C = 32, g = 0.03125: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 73.4%
+Kernel = RBF, Test = I, C = 64, g = 0.015625: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 73.2%
+Kernel = RBF, Test = I, C = 128, g = 0.0078125: 
+Accuracy = 50% (25/50) (classification)
+Cross Validation Accuracy = 73.15%
+Kernel = RBF, Test = I, C = 256, g = 0.00390625: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 75.2%
+Kernel = RBF, Test = I, C = 256, g = 0.0078125: 
+Accuracy = 48% (24/50) (classification)
+Cross Validation Accuracy = 73.25%
+Kernel = RBF, Test = I, C = 512, g = 0.00195313: 
+Accuracy = 48% (24/50) (classification)

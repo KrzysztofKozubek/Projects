@@ -1,0 +1,67 @@
+
+/*.full {*/
+    /*background: url(../img/bg-main.png) no-repeat center center fixed;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+/*}*/
+
+body {
+    background-color: #446CB3;
+}
+
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.center-block{
+    padding-top: 30px;
+    text-align: center;
+    color: #fff;
+}
+.img-resize {
+    width: 20%;
+}
+
+.page-subheader h2 {
+    letter-spacing: 2px;
+}
+
+.form-horizontal {
+    padding-top: 60px;
+}
+
+.btn-full {
+    width: 100%;
+    border: solid #4A4A4A 1px;
+    background-color: #fff;
+    color: #4A4A4A;
+}
+
+.btn-full:hover {
+    background-color: #DADFE1;
+}
+
+.registry {
+    padding-top: 20px;
+}
+
+.registry a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #9B9B9B;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.registry a:hover {
+    color: #4A4A4A;
+}

@@ -1,0 +1,37 @@
+extends ../layout
+block content
+  include client_box
+  div(class='clientContainer container-fluid')
+    div(class='row container-spaces')
+      div(class='clientContent clearfix pageContent')
+        div(class='contentHeader col-md-12')
+          h2 Płatności
+        div(class='clientSaldo col-md-12')
+          p Obecny stan konta: 
+            span(class='text-green')
+              strong #{personalData.UserMoney} PLN
+          include pay_modal
+          button(type='button' class='btn btn-action' data-toggle='modal' data-target='#payModal') Doładuj
+        div(class='col-md-8 col-md-offset-2')
+          div(class='table-responsive')
+            table(class='table table-styled')
+              thead
+                tr 
+                  th ID
+                  th Nazwa płatności
+                  th Kwota
+                  th Data wykonania przelewu
+              tbody
+                for val in results
+                  tr
+                    td #{val.PaymentID}
+                    td
+                      case val.PaymentType
+                        when 1 
+                          |Doładowanie
+                        when 2 
+                          |Wypożyczenie (opłata wstępna)
+                        when 3 
+                          |Wypożyczenie 
+                    td #{val.PaymentAmount} PLN
+                    td #{val.PaymentDate}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot-macierz dla identyfikacji podobienstwa sekwencji bialkowych</title>
+
+    <!--classes-->
+    <script src="js/Chart.js" type="text/javascript"></script>
+    <script src="js/ConvertProtein.js" type="text/javascript"></script>
+    <script src="js/ErrorMessages.js" type="text/javascript"></script>
+    <script src="js/ManagerForm.js" type="text/javascript"></script>
+    <script src="js/ManagerProtein.js" type="text/javascript"></script>
+    <script src="js/Point.js" type="text/javascript"></script>
+    <script src="js/Protein.js" type="text/javascript"></script>
+    <script src="js/Variable.js" type="text/javascript"></script>
+    <!--jQuery-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!--amCharts-->
+    <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
+    <script src="js/amcharts/xy.js" type="text/javascript"></script>
+    <script src="js/amcharts/serial.js" type="text/javascript"></script>
+    <script src="js/amcharts/plugins/export/export.js" type="text/javascript"></script>
+
+    <link type="text/css" href="js/amcharts/plugins/export/export.css" rel="stylesheet">
+
+    <!-- materialize -->
+    <link rel="stylesheet" href="css/materialize.css">
+    <!--<link rel="stylesheet" href="style/ghpages-materialize.css">-->
+    <script src="js/materialize.js"></script>
+    <link href="css/icon.css" rel="stylesheet">
+
+    <script>
+
+        /* check browser support class ES6 */
+        function isBrowserUnsupported() {
+            try {
+                eval('"use strict"; class foo {}');
+                [1, 2, 3].map(id => {return id});
+            } catch (e) {
+                return true;
+            }
+            return false;
+        }
+
+        if (isBrowserUnsupported()) {
+            alert("YOUR BROWSER NOT SUPPORT THIS WEBSITE, IF U WANNA USE IT, PLS UPDATE BROWSER");
+            console.log("YOUR BROWSER NOT SUPPORT THIS WEBSITE, IF U WANNA USE IT, PLS UPDATE BROWSER");
+        }
+
+        /* activate selected choosers */
+        $(document).ready(function () {
+            $(`select`).material_select();
+            $('.tooltipped').tooltip();
+            $('.tabs').tabs();
+        });
+        //array = {first, second}
+        let managerProtein = [];
+        var chart;
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="divider"></div>
+    <!--Basic Form-->
+    <div id="basic-form" class="section">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card-panel">
+                    <h4 class="header2">Create Dot-matrix</h4>
+                    <form action="#" onsubmit="return false;">
+                        <div class="row">
+                            <div class="input-field col s9 m4 l4">
+                                <input id="input_protein_first"
+                                       name="firstProtein"
+                                       class="validate"
+                                       placeholder="Id Structure first protein"
+                                       pattern="[0-9]{1}([A-Za-z0-9]){3}$"
+                                       title="Structure protein should contain with pattern: {Number Letter|Number Letter|Number Letter|Number} eg: 1DVQ"
+                                       minlength="4"
+                                       maxlength="4"
+                                       data-length="4"
+                                       type="text"
+                                       onchange="ManagerForm.downloadIfIsValid('first'); ManagerForm.checkForm('first')"
+                                       required />
+                                <label id="label_protein_first" for="input_protein_first" data-error="Structure protein should contain with pattern: {Number Letter|Number Letter|Number Letter|Number} eg: 1DVQ">Id Structure first protein</label>
+                            </div>
+                            <div class="input-field col s3 m2 l2">
+                                <select
+                                        id="select_protein_first"
+                                        name="select_protein_first"
+                                        class="validate"
+                                        onchange="ManagerForm.loadChartProtein('first')">
+                                </select>
+                                <label>Chain</label>
+                            </div>
+                            <div class="input-field col s9 m4 l4">
+                                <input id="input_protein_second"
+                                       name="firstProtein"
+                                       class="validate"
+                                       placeholder="Id Structure second protein"
+                                       pattern="[0-9]{1}([A-Za-z0-9]){3}$"
+                                       title="Structure protein should contain with pattern: {Number Letter|Number Letter|Number Letter|Number} eg: 2MVX"
+                                       minlength="4"
+                                       maxlength="4"
+                                       data-length="4"
+                                       type="text"
+                                       onchange="ManagerForm.downloadIfIsValid('second'); ManagerForm.checkForm('second')"
+                                       required />
+                                <label id="label_protein_second" for="input_protein_second" data-error="Structure protein should contain with pattern: {Number Letter|Number Letter|Number Letter|Number} eg: 2MVX">Id Structure second protein</label>
+                            </div>
+                            <div class="input-field col s3 m2 l2">
+                                <select
+                                        id="select_protein_second"
+                                        name="select_protein_second"
+                                        class="validate"
+                                        onchange="ManagerForm.loadChartProtein('second')">
+                                </select>
+                                <label>Chain</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="input-field col s12 m4 l4">
+                                <select
+                                        id="funOption"
+                                        class=""
+                                        onchange="ManagerForm.loadChartProtein('first'); ManagerForm.loadChartProtein('second'); ManagerForm.checkForm()"
+                                        required>
+                                    <option value="Similar">Similar</option>
+                                    <option value="Atom">Atom</option>
+                                    <option value="Polar">Polar</option>
+                                    <option value="Rotate">Rotate</option>
+                                    <option value="Hydro">Hydro</option>
+                                </select>
+                                <label for="funOption">Method Compare</label>
+                            </div>
+                            <div class="input-field col s12 m4 l4">
+                                <input id="input_threshold_value"
+                                       class="validate"
+                                       type="number"
+                                       value="50"
+                                       min="0"
+                                       max="100"
+                                       minlength="1"
+                                       maxlength="3"
+                                       data-length="3"
+                                       placeholder="Threshold value in percent"
+                                       onchange="ManagerForm.checkForm()"
+                                       required />
+                                <label for="input_threshold_value" data-error="Has to be number (0 > threshold &ge; 100)">Threshold is enter the value in percent</label>
+                            </div>
+                            <div class="input-field col s10 m3 l3">
+                                <input id="input_size_window"
+                                       class="validate"
+                                       type="number"
+                                       value="10"
+                                       min="1"
+                                       max="20"
+                                       minlength="1"
+                                       maxlength="2"
+                                       data-length="2"
+                                       placeholder="Size window"
+                                       onchange="ManagerForm.loadChartProtein('first'); ManagerForm.loadChartProtein('second'); ManagerForm.checkForm()"
+                                       required />
+                                <label for="input_size_window" data-error="Has to be number (1 > window &ge; 20)">Window</label>
+                            </div>
+                            <div class="col s2 m1 l1">
+                                <label class="row s1 m1 l1" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">Opposite</label>
+                                <input type="checkbox" id="checkbox_opposite_window"/>
+                                <label style="display: table-cell; bottom: 15px; left: 20%;" for="checkbox_opposite_window"></label>
+                            </div>
+
+                        </div>
+                        <button
+                                id="button_compare"
+                                class="btn waves-effect waves-light btn-block"
+                                type="submit"
+                                style="width: 100%;"
+                                onclick="ManagerForm.countSimilarityProteins()"
+                                disabled>
+                            COMPARE
+                            <i class="material-icons right">bar_chart</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <ul id="tabs" class="tabs">
+                <li id="tab_charts" class="tab col s6 m6 l6"><a id="a_charts" href="#charts">Charts</a></li>
+                <li id="tab_compared" class="tab col s6 m6 l6 disabled"><a id="a_compared" href="#compared">Compared</a></li>
+            </ul>
+        </div>
+        <div id="charts" class="col s12">
+            <div id="chart_first" style="width: 100%"></div>
+            <div id="chart_second" style="width: 100%"></div>
+        </div>
+        <div id="compared" class="col s12">
+            <div id="chart_compare" style="width: 100%"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const width = $(`button#button_compare`).width();
+    const height = width * 0.3 < 200 ? 200 : width * 0.3;
+    $(`div#chart_first`).height(height);
+    $(`div#chart_second`).height(height);
+    $(`div#chart_compare`).height(height * 2);
+    $(window).resize(() => {
+        const width = $(`button#button_compare`).width();
+        const height = width * 0.3 < 200 ? 200 : width * 0.3;
+        $(`div#chart_first`).height(height);
+        $(`div#chart_second`).height(height);
+        $(`div#chart_compare`).height(height * 2);
+    });
+</script>
+</body>
+</html>

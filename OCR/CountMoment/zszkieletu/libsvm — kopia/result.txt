@@ -1,0 +1,40 @@
+-t 2 -c 1 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 2 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 4 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 8 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 16 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 32 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 64 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 128 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 256 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 512 -g 1 
+Accuracy = 40% (2/5) (classification)
+-t 2 -c 1 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 2 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 4 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 8 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 16 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 32 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 64 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 128 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 256 -g 4 
+Accuracy = 0% (0/5) (classification)
+-t 2 -c 512 -g 4 
+Accuracy = 0% (0/5) (classification)

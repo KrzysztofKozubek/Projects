@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row" ng-hide="searchingUser">
+        <form>
+            <div class="form-group">
+                <label for="addPost">Add a post</label>
+                <textarea class="form-control" id="addPost" rows="5" maxlength="1000"
+                          ng-model="profileCtrl.content"></textarea>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-outline-primary my-2 my-sm-0 pull-right" ng-click="profileCtrl.addPost()">
+            Add
+        </button>
+    </div>
+
+
+    <div class="row timeline-border">
+        <md-toolbar layout="row" class="md-hue-3">
+            <div class="md-toolbar-tools">
+                <span><h1>Timeline</h1></span>
+            </div>
+        </md-toolbar>
+        <md-list-item class="md-3-line" ng-repeat="post in  user.posts">
+            <img ng-src="../img/user.png" class="md-avatar img-responsive" alt="{{post.author_name}}"/>
+            <div class="md-list-item-text message-margin" layout="column">
+                <H5><strong>{{ post.author_name}} </strong> {{ post.post_date}}</H5>
+                <p>{{ post.message }} </p>
+            </div>
+            <div class="row" ng-show="post.author_id == user.profile.id">
+                <md-button class="md-icon-button" ng-click="profileCtrl.showEditPostDialog(post)">
+                    <md-icon class="material-icons md-18 blue">mode_edit</md-icon>
+                </md-button>
+            </div>
+
+            <div class="row" ng-show="post.author_id == user.profile.id">
+                <md-button class="md-icon-button" ng-click="profileCtrl.deletePost(post)">
+                    <md-icon class="material-icons md-18 blue">delete</md-icon>
+                </md-button>
+            </div>
+
+            <div class="row">
+                <md-button class="md-icon-button" ng-click="profileCtrl.likePost(post)">
+                    <md-icon class="material-icons md-18 blue">favorite</md-icon>
+                </md-button>
+            </div>
+            {{post.likes}}
+            <md-divider></md-divider>
+        </md-list-item>
+    </div>
+</div>

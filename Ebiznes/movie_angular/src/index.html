@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Baza Filmów by Krzysztof Kozubek</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="public/images/icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="theme-color" content="#2196F3"/>
+
+  <!-- Latest compiled and minified CSS -->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://rawgit.com/strght/public/master/stylesheets/plugin-min.css">
+  <link rel="stylesheet" href="https://rawgit.com/strght/public/master/stylesheets/custom-min.css">
+
+  <!-- jQuery library -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://rawgit.com/strght/public/master/javascripts/plugin-min.js"></script>
+  <script src="https://rawgit.com/strght/public/master/javascripts/custom-min.js"></script>
+
+</head>
+<body style="background-color:#424242;">
+  <app-root>Loading...</app-root>
+  <script>
+    $("body").children().each(function () {
+      $(this).html($(this).html().replace(/@/g, "$"));
+      $(this).html($(this).html().replace(/&amp\;oacute\;/g, "ó"));
+      $(this).html($(this).html().replace(/&amp\;eacute\;/g, "é"));
+      $(this).html($(this).html().replace(/&amp\;quot\;/g, "\""));
+      $(this).html($(this).html().replace(/&amp\;quot\;/g, "\'"));
+    });
+  </script>
+</body>
+</html>
+

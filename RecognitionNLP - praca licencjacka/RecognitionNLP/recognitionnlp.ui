@@ -1,0 +1,4405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RecognitionNLPClass</class>
+ <widget class="QMainWindow" name="RecognitionNLPClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>792</width>
+    <height>552</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RecognitionNLP</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QToolTip
+{
+    border: 1px solid black;
+    background-color: #ffa02f;
+    padding: 1px;
+    border-radius: 3px;
+    opacity: 100;
+}
+
+QWidget
+{
+    color: #b1b1b1;
+    background-color: #323232;
+}
+
+QWidget:item:hover
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #ca0619);
+    color: #000000;
+}
+
+QWidget:item:selected
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+QMenuBar::item
+{
+    background: transparent;
+}
+
+QMenuBar::item:selected
+{
+    background: transparent;
+    border: 1px solid #ffaa00;
+}
+
+QMenuBar::item:pressed
+{
+    background: #444;
+    border: 1px solid #000;
+    background-color: QLinearGradient(
+    x1:0, y1:0,
+    x2:0, y2:1,
+    stop:1 #212121,
+    stop:0.4 #343434/*,
+        stop:0.2 #343434,
+        stop:0.1 #ffaa00*/
+);
+    margin-bottom:-1px;
+    padding-bottom:1px;
+}
+
+QMenu
+{
+    border: 1px solid #000;
+}
+
+QMenu::item
+{
+    padding: 2px 20px 2px 20px;
+}
+
+QMenu::item:selected
+{
+    color: #000000;
+}
+
+QWidget:disabled
+{
+    color: #404040;
+    background-color: #323232;
+}
+
+QAbstractItemView
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #4d4d4d, stop: 0.1 #646464, stop: 1 #5d5d5d);
+}
+
+QWidget:focus
+{
+    /*border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);*/
+}
+
+QLineEdit
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #4d4d4d, stop: 0 #646464, stop: 1 #5d5d5d);
+    padding: 1px;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 5;
+}
+
+QPushButton
+{
+    color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-radius: 6;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+QPushButton:pressed
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
+}
+
+QComboBox
+{
+    selection-background-color: #ffaa00;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 5;
+}
+
+QComboBox:hover,QPushButton:hover
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+
+QComboBox:on
+{
+    padding-top: 3px;
+    padding-left: 4px;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
+    selection-background-color: #ffaa00;
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    selection-background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+QComboBox::drop-down
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 0px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow
+{
+    image: url(:/down_arrow.png);
+}
+
+QGroupBox:focus
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+QTextEdit:focus
+{
+    border: 2px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+}
+
+QScrollBar:horizontal {
+    border: 1px solid #222222;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0.0 #121212, stop: 0.2 #282828, stop: 1 #484848);
+    height: 7px;
+    margin: 0px 16px 0 16px;
+}
+
+QScrollBar::handle:horizontal
+{
+    background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #ffa02f, stop: 0.5 #d7801a, stop: 1 #ffa02f);
+    min-height: 20px;
+    border-radius: 2px;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 1px solid #1b1b19;
+    border-radius: 2px;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #ffa02f, stop: 1 #d7801a);
+    width: 14px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 1px solid #1b1b19;
+    border-radius: 2px;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #ffa02f, stop: 1 #d7801a);
+    width: 14px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::right-arrow:horizontal, QScrollBar::left-arrow:horizontal
+{
+    border: 1px solid black;
+    width: 1px;
+    height: 1px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+    background: none;
+}
+
+QScrollBar:vertical
+{
+    background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0, stop: 0.0 #121212, stop: 0.2 #282828, stop: 1 #484848);
+    width: 7px;
+    margin: 16px 0 16px 0;
+    border: 1px solid #222222;
+}
+
+QScrollBar::handle:vertical
+{
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 0.5 #d7801a, stop: 1 #ffa02f);
+    min-height: 20px;
+    border-radius: 2px;
+}
+
+QScrollBar::add-line:vertical
+{
+    border: 1px solid #1b1b19;
+    border-radius: 2px;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+    height: 14px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical
+{
+    border: 1px solid #1b1b19;
+    border-radius: 2px;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #d7801a, stop: 1 #ffa02f);
+    height: 14px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+{
+    border: 1px solid black;
+    width: 1px;
+    height: 1px;
+    background: white;
+}
+
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+    background: none;
+}
+
+QTextEdit
+{
+    background-color: #242424;
+}
+
+QPlainTextEdit
+{
+    background-color: #242424;
+}
+
+QHeaderView::section
+{
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #616161, stop: 0.5 #505050, stop: 0.6 #434343, stop:1 #656565);
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #6c6c6c;
+}
+
+QCheckBox:disabled
+{
+    color: #414141;
+}
+
+QDockWidget::title
+{
+    text-align: center;
+    spacing: 3px; /* spacing between items in the tool bar */
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);
+}
+
+QDockWidget::close-button, QDockWidget::float-button
+{
+    text-align: center;
+    spacing: 1px; /* spacing between items in the tool bar */
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);
+}
+
+QDockWidget::close-button:hover, QDockWidget::float-button:hover
+{
+    background: #242424;
+}
+
+QDockWidget::close-button:pressed, QDockWidget::float-button:pressed
+{
+    padding: 1px -1px -1px 1px;
+}
+
+QMainWindow::separator
+{
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #161616, stop: 0.5 #151515, stop: 0.6 #212121, stop:1 #343434);
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #4c4c4c;
+    spacing: 3px; /* spacing between items in the tool bar */
+}
+
+QMainWindow::separator:hover
+{
+
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #d7801a, stop:0.5 #b56c17 stop:1 #ffa02f);
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #6c6c6c;
+    spacing: 3px; /* spacing between items in the tool bar */
+}
+
+QToolBar::handle
+{
+    spacing: 3px; /* spacing between items in the tool bar */
+    background: url(:/images/handle.png);
+}
+
+QMenu::separator
+{
+    height: 2px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #161616, stop: 0.5 #151515, stop: 0.6 #212121, stop:1 #343434);
+    color: white;
+    padding-left: 4px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+QProgressBar
+{
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+
+QProgressBar::chunk
+{
+    background-color: #d7801a;
+    width: 2.15px;
+    margin: 0.5px;
+}
+
+QTabBar::tab {
+    color: #b1b1b1;
+    border: 1px solid #444;
+    border-bottom-style: none;
+    background-color: #323232;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin-right: -1px;
+}
+
+QTabWidget::pane {
+    border: 1px solid #444;
+    top: 1px;
+}
+
+QTabBar::tab:last
+{
+    margin-right: 0; /* the last selected tab has nothing to overlap with on the right */
+    border-top-right-radius: 3px;
+}
+
+QTabBar::tab:first:!selected
+{
+    margin-left: 0px; /* the last selected tab has nothing to overlap with on the right */
+
+
+    border-top-left-radius: 3px;
+}
+
+QTabBar::tab:!selected
+{
+    color: #b1b1b1;
+    border-bottom-style: solid;
+    margin-top: 3px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+}
+
+QTabBar::tab:selected
+{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-bottom: 0px;
+}
+
+QTabBar::tab:!selected:hover
+{
+    /*border-top: 2px solid #ffaa00;
+    padding-bottom: 3px;*/
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);
+}
+
+QRadioButton::indicator:checked, QRadioButton::indicator:unchecked{
+    color: #b1b1b1;
+    background-color: #323232;
+    border: 1px solid #b1b1b1;
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:checked
+{
+    background-color: qradialgradient(
+    cx: 0.5, cy: 0.5,
+    fx: 0.5, fy: 0.5,
+    radius: 1.0,
+    stop: 0.25 #ffaa00,
+    stop: 0.3 #323232
+);
+}
+
+QCheckBox::indicator{
+    color: #b1b1b1;
+    background-color: #323232;
+    border: 1px solid #b1b1b1;
+    width: 9px;
+    height: 9px;
+}
+
+QRadioButton::indicator
+{
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:hover, QCheckBox::indicator:hover
+{
+    border: 1px solid #ffaa00;
+}
+
+QCheckBox::indicator:checked
+{
+    image:url(:/images/checkbox.png);
+}
+
+QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
+{
+    border: 1px solid #444;
+}
+
+
+QSlider::groove:horizontal {
+    border: 1px solid #bbb;
+    background: white;
+    height: 10px;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1, stop: 0 #eea31f, stop: 1 #ffa02f);
+    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1, stop: 0 #ffa02f, stop: 1 #ff9500);
+    border: 1px solid #777;
+    height: 10px;
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #fff;
+    border: 1px solid #777;
+    height: 10px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #eee, stop:1 #ccc);
+    border: 1px solid #777;
+    width: 13px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,  stop:0 #fff, stop:1 #ddd);
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #bbb;
+    border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+    background: #eee;
+    border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===========================================================================
+ * Colors
+ *===========================================================================
+
+Textcolor: rgb(227, 227, 227) lightgray
+Textcolor_grey: rgb(146, 146, 146);
+Textcolor:disabled rgb(89, 89, 89) gray
+Background: rgb(51, 51, 51) dark grey
+TextcolorHighlightBlue: rgb(72, 183, 231) lightblue
+WidgetBorderColor: rgb(81, 81, 81);
+HighlightColor: palette(highlight);
+SelectionColor: rgba(247, 138, 9, 127);
+SelectionGrey: rgb(102, 102, 102);
+IndicatorsAndArrows: rgb(180, 180, 180);
+
+alternate-base
+| base
+| bright-text
+| button
+| button-text
+| dark
+| highlight
+| highlighted-text
+| light
+| link
+| link-visited
+| mid
+| midlight
+| shadow
+| text
+| window
+| window-text
+*/
+
+
+/*===========================================================================
+ * QWidget
+ *===========================================================================*/
+QWidget
+{
+    color: rgb(227, 227, 227)
+}
+
+QWidget:disabled
+{
+    color: rgb(89, 89, 89);
+}
+
+QtLabb--CStyledWidget
+{
+    background: rgb(51, 51, 51);
+}
+
+/*===========================================================================
+ * QScrollArea
+ *===========================================================================*/
+QScrollArea
+{
+    background: rgb(51, 51, 51);
+}
+
+QScrollArea &gt; QWidget &gt; QWidget
+{
+    background: rgb(51, 51, 51);
+}
+
+/*===========================================================================
+ * QProgressBar
+ *===========================================================================*/
+QProgressBar
+{
+    text-align: center;
+    border: none;
+    background: rgb(81, 81, 81);
+    color: rgb(31, 31, 31);
+    padding: 2px;
+}
+
+QProgressBar:disabled
+{
+    background: rgb(61, 61, 61);
+    color: rgb(61, 61, 61);
+}
+
+
+QProgressBar::chunk:horizontal
+{
+    width: 1px;
+    background: palette(highlight);
+}
+
+QProgressBar::chunk:vertical
+{
+    border: none;
+    background: palette(highlight);
+    height: 1px;
+}
+
+
+/*===========================================================================
+ * QTabWidget
+ *===========================================================================*/
+QTabWidget::pane
+{
+    background: rgb(51, 51, 51);
+    border: 1px solid rgb(81, 81, 81);
+}
+
+
+QTabBar
+{
+    tabbar-elide-mode: 1;
+    background-color: rgb(51, 51, 51);
+    font-size: 12px;
+    qproperty-drawBase: false;
+}
+
+
+QTabBar::tab
+{
+    padding: 3px;
+    font-size: 11px;
+}
+
+
+QTabBar::tab:top
+{
+    border-left: 1px solid rgb(81, 81, 81);
+    border-top: 1px solid rgb(81, 81, 81);
+}
+
+
+QTabBar::tab:bottom
+{
+    border-left: 1px solid rgb(81, 81, 81);
+    border-bottom: 1px solid rgb(81, 81, 81);
+}
+
+
+QTabBar::tab:top:last
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+QTabBar::tab:bottom:last
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+
+QTabBar::tab:!selected
+{
+    background-color: rgb(51, 51, 51);
+}
+
+
+QTabBar::tab:hover:!selected
+{
+    background-color: rgb(102, 102, 102);
+}
+
+QTabBar::tab:selected
+{
+    background-color: rgb(81, 81, 81);
+
+}
+
+
+/*===========================================================================
+ * QMainWindow
+ *===========================================================================*/
+QMainWindow::separator
+{
+    background: rgb(51, 51, 51);
+    width: 6px;
+}
+
+QMainWindow::separator:hover
+{
+    background: rgba(247, 138, 9, 96);
+}
+
+QMainWindow
+{
+    background: rgb(51, 51, 51);
+}
+
+QSplitter::handle:horizontal
+{
+    image: url(:/metro/images/splitter_handle_horizontal.png);
+}
+
+QSplitter::handle:vertical
+{
+    image: url(:/metro/images/splitter_handle_vertical.png);
+}
+
+
+/*===========================================================================
+ * QMenu
+ *===========================================================================*/
+QMenu
+{
+    border: 1px solid rgb(81, 81, 81);
+    background-color: rgb(51, 51, 51);
+    color: rgb(227, 227, 227);
+    margin: 0px;
+    padding: 1px;
+}
+
+
+QMenu::item
+{
+    padding-left: 29px;
+    padding-top: 3px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    border: 1px solid transparent; /* reserve space for selection border */
+}
+
+QMenu::item:disabled
+{
+    color: rgb(89, 89, 89);
+}
+
+QMenu::item:selected:!disabled
+{
+    border: 1px solid transparent;
+    background-color: palette(highlight);
+    color: rgb(51, 51, 51);
+}
+
+
+QMenu::icon:checked:selected
+{
+    /* appearance of a 'checked' icon */
+    background-color: rgb(81, 81, 81);
+    border: 1px solid palette(highlight);
+}
+
+
+QMenu::icon:checked:!selected
+{
+    /* appearance of a 'checked' icon */
+    background-color: rgb(81, 81, 81);
+    color: palette(highlight);
+    border: 1px solid palette(highlight);
+}
+
+
+QMenu::icon
+{
+    border-radius: 0px;
+    margin-left: -1px;
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 4px;
+}
+
+
+QMenu::separator
+{
+    height: 1px;
+    background-color: rgb(81, 81, 81);
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+QMenu::indicator
+{
+    width: 11px;
+    height: 10px;
+    margin-left: 4px;
+}
+
+/* non-exclusive indicator = check box style indicator (see QActionGroup::setExclusive) */
+QMenu::indicator:non-exclusive:unchecked
+{
+    image: none;
+}
+
+QMenu::indicator:non-exclusive:unchecked:selected {
+    image: none;
+}
+
+/* exclusive indicator = radio button style indicator (see QActionGroup::setExclusive) */
+QMenu::indicator:exclusive:unchecked
+{
+    image: none;
+}
+
+QMenu::indicator:exclusive:unchecked:selected
+{
+    image: none;
+}
+
+QMenu::indicator:exclusive:checked
+{
+    image: url(:/metro/images/menu_checkbox_indicator_orange.png);
+}
+
+QMenu::indicator:exclusive:checked:selected
+{
+    image: url(:/metro/images/menu_checkbox_indicator_backgroundcolor.png);
+}
+
+QMenu::right-arrow
+{
+    image: url(:/metro/images/menu_right_arrow.png);
+    padding-right: 5px;
+}
+
+QMenu::right-arrow:selected
+{
+    image: url(:/metro/images/menu_right_arrow_backgroundcolor.png);
+}
+
+QMenu::right-arrow:disabled
+{
+    image: url(:/metro/images/menu_right_arrow_disabled.png);
+}
+
+
+/*===========================================================================
+ * QMenuBar
+ *===========================================================================*/
+QMenuBar
+{
+    background-color: rgb(51, 51, 51);
+    color: rgb(227, 227, 227);
+}
+
+QMenuBar::item:selected:!disabled
+{
+    color: rgb(51, 51, 51);
+    background-color: palette(highlight);
+}
+
+QMenuBar::item
+{
+    border: none;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    border-radius: 0px;
+}
+
+/*===========================================================================
+ * QToolBar
+ *===========================================================================*/
+QToolBar
+{
+    background-color: rgb(51, 51, 51);
+    border: none;
+    padding: 6px;
+    spacing: 6px;
+}
+
+
+
+QToolBar::handle:vertical
+{
+    background-repeat: repeat-x;
+    margin-left: 4px;
+    margin-right: 4px;
+    height: 12px;
+}
+
+QToolBar::handle:horizontal
+{
+    background-image: url(:/metro/images/toolbar_handle_single.png);
+    width: 14px;
+    background-repeat: repeat-y;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+
+QToolBar::separator:horizontal
+{
+    width: 1px;
+    background-color: rgb(81, 81, 81);
+    margin-top:6px;
+    margin-bottom: 6px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+QToolBar::separator:vertical
+{
+    height: 1px;
+    background-color: rgb(81, 81, 81);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+
+
+/*===========================================================================
+ * QToolButton
+ *===========================================================================*/
+QToolButton
+{
+    border: 1px solid transparent;
+    padding: 4px;
+    font-size: 10px;
+}
+
+
+QToolButton[vsmall=&quot;true&quot;]
+{
+    padding: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+
+QToolButton:hover
+{
+    border: 1px solid rgb(102, 102, 102);
+}
+
+QToolButton:pressed
+{
+    color: palette(highlight);
+    border-color: rgb(81, 81, 81);
+}
+
+
+QToolButton:checked:!pressed
+{
+    color: palette(highlight);
+    border-color: palette(highlight);
+}
+
+QToolBarExtension
+{
+    padding:0px;
+}
+
+
+QToolBarExtension:hover
+{
+    border: 1px solid rgb(146, 146, 146);
+}
+
+/*===========================================================================
+ * QToolBar#sidebar
+ *===========================================================================*/
+
+QToolBar#sidebar &gt; QToolButton
+{
+    width: 64px;
+    height: 64px;
+}
+
+
+QToolBar#sidebar &gt; .QToolButton:checked:!pressed
+{
+    color: rgb(51, 51, 51);
+    border: 1px solid qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 rgb(222, 126, 9),
+    stop:1 palette(highlight));
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 rgb(222, 126, 9),
+    stop:1 palette(highlight));
+}
+
+
+/*===========================================================================
+ * QPushButton
+ *===========================================================================*/
+
+
+QPushButton
+{
+    border: 1px solid rgb(81, 81, 81);
+    /*min-height: 12px;*/
+    padding: 5px;
+}
+
+QDialogButtonBox &gt; QPushButton
+{
+    min-width: 70px;
+}
+
+
+
+/*===========================================================================
+ * QDockWidget
+ *===========================================================================*/
+QDockWidget::title
+{
+    text-align: left; /* align the text to the left */
+    background-color: rgb(81, 81, 81);
+    padding-left: 5px;
+    border-none;
+}
+
+
+QDockWidget::title:hover
+{
+    border-left: 5px solid palette(highlight);
+    padding-left: 0px;
+}
+
+
+QDockWidget
+{
+    font-weight: bold;
+    color: rgb(146, 146, 146);
+    titlebar-normal-icon: url(:/metro/images/dockwidget_float_button.png);
+    titlebar-close-icon: url(:/metro/images/dockwidget_close_button.png);
+    border:  1px solid rgb(81, 81, 81);
+}
+
+
+QDockWidget::close-button,
+QDockWidget::float-button
+{
+    border-radius: 0px;
+}
+
+QDockWidget::close-button:hover,
+QDockWidget::float-button:hover
+{
+    border: 1px solid rgb(146, 146, 146);
+}
+
+QDockWidget::close-button:pressed,
+QDockWidget::float-button:pressed
+{
+    border: 1px solid rgb(146, 146, 146);
+    background: rgb(51, 51, 51);
+}
+
+
+QDockWidget[floating=&quot;false&quot;] &gt; QWidget
+{
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+}
+
+
+QDockWidget QDialog
+{
+    border: none;
+}
+
+QDockWidget &gt; QWidget
+{
+    border: none;
+    background: rgb(51, 51, 51);
+}
+
+
+
+/*===========================================================================
+ * QLineEdit
+ *===========================================================================*/
+QLineEdit
+{
+    padding-left:   2px;
+    padding-right:  2px;
+    padding-top:    3px;
+    padding-bottom: 3px;
+}
+
+
+
+
+/*===========================================================================
+ * QTextEdit, QPlainTextEdit
+ *===========================================================================*/
+QTextEdit,
+QPlainTextEdit
+{
+    background: rgb(41, 41, 41);
+    selection-background-color: rgba(247, 138, 9, 127);
+    padding-left:   2px;
+    padding-right:  2px;
+    padding-top:    3px;
+    padding-bottom: 3px;
+}
+
+
+
+
+/*===========================================================================
+ * QComboBox
+ *===========================================================================*/
+QComboBox
+{
+    border: 1px solid rgb(81, 81, 81);
+    background-color: rgb(51, 51, 51);
+    padding: 2px;
+}
+
+QComboBox:focus, QComboBox:on
+{
+    border-color: palette(highlight);
+}
+
+
+QComboBox::drop-down
+{
+    border: none;
+    border-left: 1px solid transparent;
+    width: 20px;
+    margin-left: 6px;
+}
+
+QComboBox::drop-down:hover
+{
+    background: rgb(61, 61, 61);
+    border-left: 1px solid rgb(81, 81, 81);
+}
+
+QComboBox::drop-down:on
+{
+    background: rgb(81, 81, 81);
+    border-left: 1px solid rgb(81, 81, 81);
+}
+
+QComboBox::down-arrow
+{
+    image: url(:/metro/images/combobox_down_arrow.png);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 1px solid rgb(81, 81, 81);
+    border-top: 1px solid palette(highlight);
+    background-color: rgb(51, 51, 51);
+    selection-background-color: palette(highlight);
+    selection-color: rgb(51, 51, 51);
+    padding: 1px;
+}
+
+QComboBox QAbstractItemView::item
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+QComboBox[emphasize=&quot;true&quot;]
+{
+    color: palette(highlight);
+    font-size: 14pt;
+}
+
+
+
+/*===========================================================================
+ * QCompleter popup configuratoion
+ *===========================================================================*/
+QAbstractItemView#completerPopup
+{
+    border: 1px solid rgb(81, 81, 81);
+    padding: 1px;
+}
+
+QAbstractItemView#completerPopup::item
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+
+QAbstractItemView &gt; QWidget &gt; QAbstractSpinBox::down-button
+{
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
+
+
+
+QAbstractItemView &gt; QWidget &gt; QAbstractSpinBox::up-button
+{
+    margin-top: 1px;
+    margin-right: 1px;
+}
+
+/*===========================================================================
+ * QDateTimeEdit
+ *===========================================================================*/
+QDateTimeEdit::drop-down
+{
+    border-style: none;;
+}
+
+
+
+/*===========================================================================
+ * QDial
+ *===========================================================================*/
+QDial
+{
+    background-color: grey;
+}
+
+
+
+/*===========================================================================
+ * QGroupBox
+ *===========================================================================*/
+QGroupBox
+{
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: beige;
+    font: bold 14px;
+}
+
+
+/*
+ * This group box style tests for the property &quot;hasTitle&quot;. This is a dynamic
+ * property that a group box should set if the title string is empty
+ */
+QGroupBox[hasTitle=&quot;no&quot;]
+{
+    padding-top: 4px;
+}
+
+/*
+ * If the group box sourrounds an graphics view, than we do not want padding
+ */
+
+
+QGroupBox::title
+{
+    subcontrol-position: top left;
+    subcontrol-origin: padding;
+    left: 4px;
+    top:  4px;
+}
+
+
+/*===========================================================================
+ * QRadioButton
+ *===========================================================================*/
+QRadioButton
+{
+    spacing: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+QRadioButton::disabled
+{
+    color: rgb(81, 81, 81);
+}
+
+QRadioButton::indicator
+{
+    border: none;
+    background: none;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(:/metro/images/radiobutton_background.png);
+}
+
+QRadioButton::indicator::checked
+{
+    image: url(:/metro/images/radiobutton_indicator.png);
+    image-position: center;
+}
+
+
+QRadioButton::indicator::disabled::checked
+{
+    background-image: url(:/metro/images/radiobutton_indicator_disabled.png);
+}
+
+
+/*===========================================================================
+ * QCheckBox
+ *===========================================================================*/
+QCheckBox
+{
+    spacing: 8px;
+}
+
+QCheckBox::disabled
+{
+    color: rgb(81, 81, 81);
+}
+
+QCheckBox::indicator
+{
+    border: 1px solid rgb(81, 81, 81);
+    background: rgb(51, 51, 51);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 15px;
+    height: 15px;
+    padding: 0px;
+}
+
+QCheckBox::indicator::checked
+{
+    image: url(:/metro/images/checkbox_indicator.png);
+    image-position: center;
+}
+
+
+QCheckBox::indicator::disabled::checked
+{
+    image: url(:/metro/images/checkbox_rounded_indicator_disabled.png);
+    image-position: center;
+}
+
+
+QCheckBox[header=&quot;true&quot;]
+{
+    color: palette(highlight);
+    font-size: 9pt;
+}
+
+QCheckBox[branch=&quot;true&quot;]
+{
+    spacing: 2px;
+}
+
+
+QCheckBox[branch=&quot;true&quot;]::indicator
+{
+    image: url(:/metro/images/treeview_branch_closed.png);
+    border: none;
+    background: none;
+    width: 10px;
+    height: 10px;
+    background: none;
+}
+
+
+QCheckBox[branch=&quot;true&quot;]::indicator::checked
+{
+    image: url(:/metro/images/treeview_branch_open.png);
+    image-position: left;
+}
+
+
+
+/*===========================================================================
+ * QAbstractItemView
+ *===========================================================================*/
+QAbstractItemView
+{
+    background-color: rgb(51, 51, 51);
+    border: 1px solid rgb(81, 81, 81);
+    alternate-background-color: rgba(60, 60, 60, 255);
+    gridline-color: rgb(81, 81, 81);
+}
+
+
+QAbstractItemView::item:hover:!selected
+{
+    background-color: rgb(102, 102, 102);
+    color: rgb(51, 51, 51);
+}
+
+QAbstractItemView::item:selected
+{
+    background-color: palette(highlight);
+    color: rgb(51, 51, 51);
+}
+
+QListView::item QLineEdit
+{
+    background: rgb(51, 51, 51);
+    border: none;
+    padding: 0px;
+}
+
+
+
+/*===========================================================================
+ * QHeaderView
+ *===========================================================================*/
+QHeaderView
+{
+    background-color: rgb(51, 51, 51);
+    border: none;
+}
+
+QHeaderView::section:checked
+{
+    color: palette(highlight);
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* horizontal ---------------------------------*/
+QHeaderView::section:horizontal
+{
+    /*background-color: rgb(81, 81, 81); filled style*/
+    background-color: rgb(61, 61, 61);
+    padding: 3px;
+    border: none;
+    border-bottom: 1px solid rgb(87, 81, 81);
+}
+
+
+QHeaderView::section:horizontal:middle,
+QHeaderView::section:horizontal:first
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+
+/*QHeaderView::section:horizontal:first
+{
+     border-left: 1px solid rgb(81, 81, 81);
+}*/
+
+QHeaderView::section:horizontal:last
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+QHeaderView::down-arrow
+{
+    image: url(:/metro/images/headerview_down_arrow.png);
+}
+
+QHeaderView::up-arrow
+{
+    image: url(:/metro/images/headerview_up_arrow.png);
+}
+
+
+/* vertical ---------------------------------*/
+QHeaderView:vertical
+{
+    border: none;
+}
+
+QHeaderView::section:vertical
+{
+    background-color: rgb(51, 51, 51);
+    padding: 3px;
+    border: 1px solid rgb(67, 67, 67);
+    border-top: none;
+    border-bottom: 1px solid rgb(67, 67, 67);
+    border-left: none;
+}
+
+
+QHeaderView &gt; QLineEdit
+{
+    background: rgb(41, 41, 41);
+}
+
+QHeaderView &gt; QLineEdit:!focus
+{
+    border: none;
+    margin-bottom: 1px;
+}
+
+
+
+QHeaderView &gt; QToolButton
+{
+    margin-top: 0px;
+    padding: 0px;
+}
+
+
+
+/*===========================================================================
+ * QTableView
+ *===========================================================================*/
+QTableView QTableCornerButton::section
+{
+    background-color: rgb(51, 51, 51);
+    border-top: none;
+    border-left: none;
+    border-right: 1px solid rgb(81, 81, 81);
+    border-bottom: 1px solid rgb(81, 81, 81);
+}
+
+
+QTableView
+{
+    qproperty-showGrid: true;
+    qproperty-alternatingRowColors: false;
+}
+
+/*
+QTableView::item
+{
+	border-right: 1px solid rgb(67, 67, 67);
+	border-bottom: 1px solid rgb(67, 67, 67);
+}*/
+
+
+QTableView#eventLog
+{
+    qproperty-showGrid: false;
+    qproperty-alternatingRowColors: true;
+}
+
+QTableView QScrollBar:vertical
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+QTableView QScrollBar::add-line:vertical
+{
+    border-right: 1px solid rgb(81, 81, 81);
+    border-bottom: 1px solid rgb(81, 81, 81);
+}
+
+
+QTableView QScrollBar::sub-line:vertical
+{
+    border-right: 1px solid rgb(81, 81, 81);
+}
+
+
+
+/*===========================================================================
+ * QGraphicsView
+ *===========================================================================*/
+QGraphicsView
+{
+    background: #333333;
+    border: none;
+}
+
+/*===========================================================================
+ * QScrollBar horizontal
+ *===========================================================================*/
+QScrollBar:horizontal
+{
+    background-color: rgb(61, 61, 61);
+    border: none;
+    height: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+
+QScrollBar:horizontal:disabled
+{
+    background-color: rgb(61, 61, 61);
+}
+
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal
+{
+    border: none;
+    background-color: rgb(61, 61, 61);
+}
+
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:hover
+{
+    background-color: rgb(81, 81, 81);
+}
+
+QScrollBar::add-line:horizontal:pressed,
+QScrollBar::sub-line:horizontal:pressed
+{
+    background-color: rgb(61, 61, 61);
+}
+
+QScrollBar::handle:horizontal:pressed,
+QScrollBar::handle:horizontal:hover
+{
+    background: rgb(102, 102, 102);
+    border: 1px solid rgb(146, 146, 146);
+}
+
+
+QScrollBar::handle:horizontal:disabled,
+QScrollBar::add-line:horizontal:disabled,
+QScrollBar::sub-line:horizontal:disabled
+{
+    background-color: rgb(61, 61, 61);
+}
+
+
+QScrollBar::handle:horizontal
+{
+    border: none;
+    background-color: rgb(81, 81, 81);
+    min-width: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+
+QScrollBar::add-line:horizontal
+{
+    width: 17px;
+    subcontrol-position: right;
+}
+
+QScrollBar::sub-line:horizontal
+{
+    width: 17px;
+    subcontrol-position: left;
+}
+
+
+/*===========================================================================
+ * QScrollBar vertical
+ *===========================================================================*/
+QScrollBar:vertical
+{
+    background-color: rgb(61, 61, 61);
+    width: 16px;
+    border: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+
+QScrollBar:vertical:disabled
+{
+    background-color: rgb(61, 61, 61);
+}
+
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical
+{
+    border: none;
+    background-color: rgb(61, 61, 61);
+}
+
+QScrollBar::add-line:vertical:hover,
+QScrollBar::sub-line:vertical:hover
+{
+    background-color: rgb(81, 81, 81);
+}
+
+QScrollBar::add-line:vertical:pressed,
+QScrollBar::sub-line:vertical:pressed
+{
+    background-color: rgb(61, 61, 61);
+}
+
+
+
+QScrollBar::handle:vertical:pressed,
+QScrollBar::handle:vertical:hover
+{
+    background: rgb(102, 102, 102);
+    border: 1px solid rgb(146, 146, 146);
+}
+
+
+QScrollBar::handle:vertical:disabled,
+QScrollBar::add-line:vertical:disabled,
+QScrollBar::sub-line:vertical:disabled
+{
+    background-color: rgb(61, 61, 61);
+}
+
+
+QScrollBar::handle:vertical
+{
+    /*border: 1px solid rgb(102, 102, 102);*/
+    background-color: rgb(81, 81, 81);
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 10px;
+}
+
+QScrollBar::add-line:vertical
+{
+    height: 17px;
+    subcontrol-position: bottom;
+}
+
+QScrollBar::sub-line:vertical
+{
+    height: 17px;
+    subcontrol-position: top;
+}
+
+QScrollBar:up-arrow:vertical
+{
+    image: url(:/metro/images/scrollbar_up_arrow.png);
+}
+
+QScrollBar:down-arrow:vertical
+{
+    image: url(:/metro/images/scrollbar_down_arrow.png);
+}
+
+
+/*===========================================================================
+ * QScrollBar
+ *===========================================================================*/
+QScrollBar::sub-line:pressed,
+QScrollBar::add-line:pressed,
+QScrollBar::handle:pressed
+{
+
+}
+
+QScrollBar::add-page,
+QScrollBar::sub-page
+{
+    background: transparent;
+}
+
+
+/*===========================================================================
+ * QToolTip
+ *===========================================================================*/
+QToolTip
+{
+    border: 1px solid rgb(64, 64, 64);
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+    stop:0 rgba(255, 249, 151),
+    stop:1 rgba(211, 205,  98));
+    color: black;
+}
+
+
+/*===========================================================================
+ * QLabel
+ *===========================================================================*/
+QLabel
+{
+    color: rgb(227, 227, 227);
+}
+
+QLabel#headerLabel
+{
+    color: rgba(20, 138, 189, 255);
+    border: 1px;
+    border-bottom: 1px solid rgba(20, 138, 189, 255);
+    padding-bottom: 15px;
+    font-size: 11pt;
+}
+
+QLabel[header=&quot;true&quot;]
+{
+    color: palette(highlight);
+    font-size: 9pt;
+}
+
+QLabel[bignumber=&quot;true&quot;]
+{
+    color: palette(highlight);
+    font-size: 20px;
+}
+
+QLabel[border=&quot;true&quot;]
+{
+    border: 1px solid rgb(81, 81, 81);
+}
+
+/*===========================================================================
+ * QDialog
+ *===========================================================================*/
+QDialog
+{
+    background: #333333;
+}
+
+QFrame#line
+{
+    border: none;
+    background: #666666;
+    max-height: 1px;
+}
+
+
+QFrame[border=&quot;true&quot;]
+{
+    border: 1px solid rgb(81, 81, 81);
+}
+
+
+/*===========================================================================
+ * QSizeGrip - the size grip in the right border of the main window
+ *===========================================================================*/
+QSizeGrip
+{
+    image: url(:/metro/images/sizegrip.png);
+}
+
+
+/*===========================================================================
+ * QStatusBar
+ *===========================================================================*/
+QStatusBar::item
+{
+    border-left: 1px solid #595959;
+
+}
+
+QStatusBar
+{
+    min-height: 24px;
+}
+
+QStatusBar
+{
+    background: #333333;
+}
+
+/*QtLabb--Core--CStatusBarProgressIndicator
+{
+	background: yellow;
+}*/
+
+
+/*===========================================================================
+ * QFileDialog
+ *===========================================================================*/
+QFileDialog &gt; QToolButton
+{
+    padding: 0px;
+}
+
+/*===========================================================================
+ * QToolBox
+ *===========================================================================*/
+
+QToolBox
+{
+    background: rgb(51, 51, 51);
+    icon-size: 24px;
+}
+
+/*QToolBox &gt; QScrollArea &gt; QWidget &gt; QWidget
+{
+    background: rgb(51, 51, 51);
+    padding: -9px;
+}*/
+
+
+QToolBox &gt; QScrollArea
+{
+    background: rgb(51, 51, 51);
+    padding: -9px;
+}
+
+
+QToolBox::tab
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+    stop:0 rgb(55, 55, 55),
+    stop:1 rgb(44, 44, 44));
+    border: 1px solid rgb(81, 81, 81);
+    color: #cccccc;
+    padding-right: 5px;
+    padding-left: 14px;
+    background-repeat: no-repeat;
+    background-image: url(:/metro/images/toolbox_tab_closed.png);
+    background-position: center left;
+}
+
+
+QToolBox::tab:selected
+{
+    background-color: rgb(81, 81, 81);
+    color: palette(highlight);
+    border-color: palette(highlight);
+    background-image: url(:/metro/images/toolbox_tab_open.png);
+    background-position: center left;
+}
+
+
+/*===========================================================================
+ * QCalendarWidget
+ *===========================================================================*/
+QWidget#qt_calendar_navigationbar
+{
+    background: palette(highlight);
+}
+
+QWidget#qt_calendar_navigationbar QToolButton:!hover:!pressed
+{
+    color: rgb(51, 51, 51);
+}
+
+
+/*===========================================================================
+ * External libraries
+ *===========================================================================*/
+
+/*===========================================================================
+* QtLabb Library
+*===========================================================================*/
+QtLabb--Core--CWorkbenchManager &gt; QWidget#qt_scrollarea_viewport &gt; QtLabb--CStyledWidget
+{
+    border: 1px solid rgb(81, 81, 81);
+}
+
+QtLabb--Core--CWorkbenchManager &gt; QWidget#qt_scrollarea_viewport &gt; QFrame
+{
+    border: 1px solid rgb(81, 81, 81);
+}
+
+
+
+Qvi--CLiveImageDisplay
+{
+    background: black;
+    border: none;
+}
+
+
+Qvi--CCameraSettingsWidget QLabel#exposureSettingsLabel,
+Qvi--CCameraSettingsWidget QLabel#cameraFeaturesLabel
+{
+    color: palette(highlight);
+    font-size: 9pt;
+}
+
+QtLabb--CValvePositionConfigWidget QLabel#valveLabel,
+QtLabb--CValvePositionConfigWidget QLabel#positionsLabel
+{
+    color: palette(highlight);
+    font-size: 9pt;
+}
+
+
+/*===========================================================================
+ * CRulerWidget
+ *===========================================================================*/
+QtLabb--CRulerWidget
+{
+    color: rgb(146, 146, 146); /*textcolor*/
+    border: none;
+    font-size: 8px;
+}
+
+
+QtLabb--CImageViewer
+{
+    background-color: #333333;
+}
+
+QtLabb--CPositioningMap
+{
+    background-color: #333333;
+}
+
+
+/*===========================================================================
+ * CDialEx
+ *===========================================================================*/
+QtLabb--CDialEx
+{
+    background-color: rgb(60, 60, 60);
+}
+
+
+/*===========================================================================
+ * QWizard
+ *===========================================================================*/
+
+/*main wizard background */
+QWizard &gt; QWidget
+{
+    background: rgb(51, 51, 51);
+}
+
+
+/*watermark container, complete page, buttons*/
+QWizard &gt; QWidget &gt; .QWidget,
+QWizard &gt; QWidget &gt; .QFrame
+{
+    background: rgb(51, 51, 51);
+}
+
+/* watermark image*/
+QWizard &gt; QWidget &gt; QWidget &gt; QWidget
+{
+    background: rgb(51, 51, 51);
+}
+
+QWizard QLabel#wizardTitleLabel
+{
+    font: normal 12pt;
+    color: palette(highlight);
+}
+
+QWizard QLabel#wizardWatermarkPixmapLabel
+{
+    border: 1px solid rgb(81, 81, 81);
+}
+
+QWizardPage
+{
+    padding: 0px;
+}
+
+QWizard QAbstractButton[wizardButton=&quot;true&quot;]
+{
+    min-width: 70px;
+}
+
+/*===========================================================================
+ * QProgressIndicator
+ *===========================================================================*/
+QProgressIndicator
+{
+    qproperty-color: palette(highlight);
+}
+
+
+/*===========================================================================
+ * QtLabb--CHeaderWidget
+ *===========================================================================*/
+QtLabb--CHeaderWidget
+{
+    background-color: rgb(51, 51, 51);
+    border: none;
+    padding: 0px;
+    padding-left: 9px;
+}
+
+QtLabb--CHeaderWidget QLabel#captionLabel
+{
+    /*font-size: 16pt;
+	font-family: &quot;Segoe WP Light&quot;;*/
+    font-size: 12pt;
+    color: palette(highlight);
+}
+
+
+/*===========================================================================
+ * QtLabb--CAboutDialog
+ *===========================================================================*/
+QtLabb--CAboutDialog QFrame#contentFrame
+{
+    background: rgb(41, 41, 41);
+}
+
+QtLabb--CAboutDialog QLabel#applicationLabel
+{
+    font-size: 13pt;
+    font-weight: normal;
+    color: palette(highlight);
+}
+
+QtLabb--CAboutDialog QLabel#urlLabel
+{
+    color: palette(highlight);
+    text-decoration: underline;
+}
+
+/*===========================================================================
+ * QtLabb--Core--CActivationDialog
+ *===========================================================================*/
+QtLabb--Core--CProductActivationDialog QLabel#titleLabel
+{
+    font: 12pt;
+    color: rgb(20, 138, 189);
+}
+
+QtLabb--Core--CProductActivationDialog QFrame#titleFrame
+{
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid #7f7f7f;
+}
+
+QtLabb--Script--CScriptDoubleSpinBox
+{
+    background-image: url(:/metro/images/var_indicator_orange.png);
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding-left: 16px;
+}
+
+QtLabb--Script--CScriptLineEdit
+{
+    background-image: url(:/metro/images/var_indicator_orange.png);
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding-left: 16px;
+}
+
+
+/*===========================================================================
+ * QtLabb--CHintWidget
+ *===========================================================================*/
+QtLabb--CHintWidget
+{
+    border: 1px solid rgb(81, 81, 81);
+    border-left: 6px solid palette(highlight);
+    background: rgb(61, 61, 61);
+}
+
+
+QtLabb--CHintWidget &gt; QLabel
+{
+    background: none;
+}
+
+
+/*===========================================================================
+ * QtLabb--Core--CMainWindow
+ *===========================================================================*/
+QtLabb--Core--CMainWindow
+{
+    qproperty-drawDockTabBarBase: false;
+}
+
+QtLabb--Core--CFutureProgressV2
+{
+    background: rgb(61, 61, 61);
+    margin-bottom: 6px;
+}
+
+QtLabb--Core--CProgressView
+{
+    padding: 6px;
+}
+
+
+/*===========================================================================
+ * QtLabb--CScriptTreeView
+ *===========================================================================*/
+QtLabb--CScriptTreeView
+{
+    qproperty-currentFunctionBrush: rgb(0, 117, 170, 255);
+    qproperty-functionActiveBrush: rgb(0, 117, 170, 50);
+
+    qproperty-captionColor: rgb(227, 227, 227);
+    qproperty-parametersColor: rgba(255, 255, 255, 160);
+    qproperty-statusColor: palette(highlight);
+
+    qproperty-mouseOverCaptionColor: rgb(41, 41, 41);
+    qproperty-mouseOverParametersColor: rgb(51, 51, 51);
+    qproperty-mouseOverStatusColor: palette(highlight);
+
+    qproperty-selectedCaptionColor: rgb(51, 51, 51);
+    qproperty-selectedParametersColor: rgb(51, 51, 51, 180);
+    qproperty-selectedStatusColor: rgb(51, 51, 51);
+
+    qproperty-currentFunctionCaptionColor: rgb(41, 41, 41);
+    qproperty-currentFunctionParametersColor: rgb(41, 41, 41, 180);
+    qproperty-currentFunctionStatusColor: palette(highlight);
+
+    qproperty-functionActiveCaptionColor: rgb(227, 227, 227);
+    qproperty-functionActiveParametersColor: rgba(255, 255, 255, 160);
+    qproperty-functionActiveStatusColor: palette(highlight);
+}
+
+
+/*===========================================================================
+ * QtLabb qwt library
+ *===========================================================================*/
+QtLabb--CStylablePlot
+{
+    qproperty-majorGridColor: rgb(51, 51, 51);
+    qproperty-majorGridPenStyle: SolidLine;
+    qproperty-minorGridColor: rgb(61, 61, 61);
+    qproperty-minorGridPenStyle: SolidLine;
+    /* font family, pointSizeF, pixelSize, QFont::StyleHint, QFont::Weight,
+       QFont::Style, underline, strikeOut, fixedPitch, rawMode*/
+    qproperty-yAxisTitleFont: &quot;none,10,-1,5,0,0,0,0,0,0&quot;;
+    qproperty-xAxisTitleFont: &quot;none,10,-1,5,0,0,0,0,0,0&quot;;
+    qproperty-xAxisTitleColor: palette(highlight);
+    qproperty-yAxisTitleColor: palette(highlight);
+}
+
+QwtPlotCanvas
+{
+    border: none;
+    background: rgb(31, 31, 31);
+}
+
+
+QwtLegend,
+QwtLegend QWidget,
+QWidget#QwtLegendViewContents
+{
+    background: rgb(61, 61, 61);
+}
+
+
+QwtScaleWidget
+{
+    color: rgb(146, 146, 146);
+    font-size: 9px;
+}
+
+QToolBar#plotToolBar &gt; QToolButton
+{
+    padding: 2px;
+}
+
+QwtKnob
+{
+    color: rgb(133, 133, 133);
+    font-size: 9px;
+    qproperty-knobColor: rgb(51, 51, 51);
+    qproperty-borderWidth: 1;
+}
+
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabLoadData">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>771</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Load Data</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>731</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Load Data</string>
+      </property>
+      <widget class="QGroupBox" name="groupBox_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>711</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Path</string>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>691</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labelLoadPath">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Path:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="inputLoadPath">
+           <property name="font">
+            <font>
+             <pointsize>18</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Path to image depiciting the NLP</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="buttonLoadData">
+           <property name="text">
+            <string>Load Data</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="gridLayoutWidget_7">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>120</y>
+         <width>281</width>
+         <height>321</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="1" column="0">
+         <widget class="QListWidget" name="listLoadData"/>
+        </item>
+        <item row="1" column="1">
+         <spacer name="verticalSpacer_27">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="buttonLoadClearData">
+          <property name="text">
+           <string>Clear List</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer_12">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="buttonTest">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>410</y>
+         <width>411</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Test</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Propertys</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>40</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>List noising</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="GBPropertys">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>741</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Propertys</string>
+      </property>
+      <widget class="QLabel" name="labelPropertysResultImage">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>390</y>
+         <width>301</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="GBPropertysSliders">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>70</y>
+         <width>391</width>
+         <height>311</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Value</string>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>19</x>
+          <y>29</y>
+          <width>321</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="4">
+          <widget class="QLabel" name="labelPropertysPlusMinus">
+           <property name="text">
+            <string> - / +</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="labelPropertysVS1">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="6">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="0">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="6">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="labelPropertysValue">
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="6">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="6">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="labelPropertysV3">
+           <property name="text">
+            <string>Val3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="labelPropertysV4">
+           <property name="text">
+            <string>Val4</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="6">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="6">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="labelPropertysV1">
+           <property name="text">
+            <string>Val1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="labelPropertysV2">
+           <property name="text">
+            <string>Val2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="labelPropertysV5">
+           <property name="text">
+            <string>Val5</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="4">
+          <widget class="QSlider" name="HSPropertys44">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="labelPropertysV6">
+           <property name="text">
+            <string>Val6</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="4">
+          <widget class="QSlider" name="HSPropertys55">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QSlider" name="HSPropertys33">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QSlider" name="HSPropertys22">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QSlider" name="HSPropertys2">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QSlider" name="HSPropertys1">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QSlider" name="HSPropertys6">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="4">
+          <widget class="QSlider" name="HSPropertys66">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QSlider" name="HSPropertys11">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QSlider" name="HSPropertys5">
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QSlider" name="HSPropertys3">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLabel" name="labelPropertysVS2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QSlider" name="HSPropertys4">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3">
+          <widget class="QLabel" name="labelPropertysVS5">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QLabel" name="labelPropertysVS3">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QLabel" name="labelPropertysVS4">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3">
+          <widget class="QLabel" name="labelPropertysVS6">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="QLabel" name="labelPropertysVS22">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QLabel" name="labelPropertysVS11">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="5">
+          <widget class="QLabel" name="labelPropertysVS33">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="5">
+          <widget class="QLabel" name="labelPropertysVS55">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="5">
+          <widget class="QLabel" name="labelPropertysVS66">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="5">
+          <widget class="QLabel" name="labelPropertysVS44">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="0">
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="6" column="0">
+          <spacer name="verticalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0">
+          <spacer name="verticalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="buttonPropertysAddNoising">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>30</y>
+          <width>41</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>=&gt;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="GBPropertysRBs">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>171</width>
+         <height>311</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Functions</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>25</y>
+          <width>151</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="rbPropertysContrast">
+           <property name="text">
+            <string>Contrast</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysBlur">
+           <property name="text">
+            <string>Blur</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysGaussianBlur">
+           <property name="text">
+            <string>GaussianBlur</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysMedianBlur">
+           <property name="text">
+            <string>MedianBlur</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysBilateralFilter">
+           <property name="text">
+            <string>BilateralFilter</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysErode">
+           <property name="text">
+            <string>Erode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysDilate">
+           <property name="text">
+            <string>Dilate</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysZoom">
+           <property name="text">
+            <string>Zoom</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbPropertysFiltrTwoD">
+           <property name="text">
+            <string>FiltrTwoD</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbAffinePropertysTransformations">
+           <property name="text">
+            <string>Affine Transformations</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="buttonPropertysCleaerNoising">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>400</y>
+         <width>141</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Clear list</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="listPropertysNoising">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>71</y>
+         <width>141</width>
+         <height>311</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Segmentation</string>
+     </attribute>
+     <widget class="QGroupBox" name="GBSegmentation">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>761</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Segmentation</string>
+      </property>
+      <widget class="QGroupBox" name="GBSegmentationResultImage">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>350</y>
+         <width>741</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Result image</string>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>721</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="1" column="3">
+          <widget class="QLabel" name="labelSegmentationResult4">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="labelSegmentationResult5">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="labelSegmentationResult2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="labelSegmentationResult3">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labelSegmentationResult1">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="6">
+          <widget class="QLabel" name="labelSegmentationResult7">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QLabel" name="labelSegmentationResult6">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="6">
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="5">
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="4">
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="3">
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="2">
+          <spacer name="horizontalSpacer_11">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="GBSegmentationOption">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>191</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Pre procesing</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>160</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation1">
+           <property name="text">
+            <string>Erode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation2">
+           <property name="text">
+            <string>Contrast</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation3">
+           <property name="text">
+            <string>Blck And White</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation4">
+           <property name="text">
+            <string>Cut image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation5">
+           <property name="text">
+            <string>Negative</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RBSegmetation6">
+           <property name="text">
+            <string>Sum Control</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="GBSegmentationSliders">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>50</y>
+         <width>341</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Value</string>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>321</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="2">
+          <widget class="QLabel" name="labelSegmentationValue">
+           <property name="text">
+            <string>   Value   </string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSlider" name="HSSegmentation2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSlider" name="HSSegmentation3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="labelSegmentationSlider">
+           <property name="text">
+            <string>Slider</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="labelSegmentationValue1">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <spacer name="verticalSpacer_24">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="3" column="3">
+          <spacer name="verticalSpacer_25">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="3">
+          <spacer name="verticalSpacer_26">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="3">
+          <spacer name="verticalSpacer_22">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="3">
+          <spacer name="verticalSpacer_23">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="labelSegmentationValue2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLabel" name="labelSegmentationValue3">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="labelSegmentationValue4">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSlider" name="HSSegmentation1">
+           <property name="font">
+            <font>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QSlider" name="HSSegmentation4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labelSegmentation1">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labelSegmentation2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="labelSegmentation3">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelSegmentation4">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Training</string>
+     </attribute>
+     <widget class="QGroupBox" name="GBTest">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>741</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Training</string>
+      </property>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>721</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>9</y>
+          <width>641</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest3">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set degree in kernel function (default 3)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest5">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set coef0 in kernel function (default 0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="labelParameter12">
+           <property name="text">
+            <string>Probablility Estimates</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_24">
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <spacer name="verticalSpacer_14">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="6" column="2">
+          <spacer name="verticalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_23">
+           <property name="text">
+            <string>Parameter</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest1">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;svm_type : set type of SVM (default 0)&lt;/p&gt;&lt;p&gt;				0 -- C-SVC              (multi-class classification)&lt;/p&gt;&lt;p&gt;				1 -- nu-SVC             (multi-class classification)&lt;/p&gt;&lt;p&gt;				2 -- one-class SVM&lt;/p&gt;&lt;p&gt;				3 -- epsilon-SVR        (regression)&lt;/p&gt;&lt;p&gt;				4 -- nu-SVR             (regression)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest8">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;episilon /= 100&lt;/p&gt;&lt;p&gt;set the epsilon in loss function of epsilon-SVR (default 0.1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest13">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set the parameter C of class i to weight*C, for C-SVC (default 1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="labelParameter9">
+           <property name="text">
+            <string>Cache Size</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="labelParameter11">
+           <property name="text">
+            <string>Shrinking</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labelParameter1">
+           <property name="text">
+            <string>Typ SVM</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelParameter3">
+           <property name="text">
+            <string>Degree</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="labelParameter2">
+           <property name="text">
+            <string>Kernel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="labelParameter6">
+           <property name="text">
+            <string>Cost</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="labelParameter4">
+           <property name="text">
+            <string>Gamma</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="labelParameter5">
+           <property name="text">
+            <string>coef0</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="labelParameter7">
+           <property name="text">
+            <string>Nu</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="labelParameter8">
+           <property name="text">
+            <string>Epsilon</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="14" column="2">
+          <spacer name="verticalSpacer_21">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="12" column="2">
+          <spacer name="verticalSpacer_19">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="8" column="2">
+          <spacer name="verticalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="10" column="2">
+          <spacer name="verticalSpacer_17">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="9" column="2">
+          <spacer name="verticalSpacer_16">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="2">
+          <spacer name="verticalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="2">
+          <spacer name="verticalSpacer_11">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="11" column="2">
+          <spacer name="verticalSpacer_18">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="3" column="2">
+          <spacer name="verticalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="2">
+          <spacer name="verticalSpacer_12">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="13" column="2">
+          <spacer name="verticalSpacer_20">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="labelParameter10">
+           <property name="text">
+            <string>Epsilon Tolerant</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest9">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set cache memory size in MB (default 100)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest4">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set gamma in kernel function (default 1/num_features)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest7">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;nu /= 10&lt;/p&gt;&lt;p&gt;set the parameter nu of nu-SVC, one-class SVM, and nu-SVR (default 0.5)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest2">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;kernel_type : set type of kernel function (default 2)&lt;/p&gt;&lt;p&gt;				0 -- linear: u'*v&lt;/p&gt;&lt;p&gt;				1 -- polynomial: (gamma*u'*v + coef0)^degree&lt;/p&gt;&lt;p&gt;				2 -- radial basis function: exp(-gamma*|u-v|^2)&lt;/p&gt;&lt;p&gt;				3 -- sigmoid: tanh(gamma*u'*v + coef0)&lt;/p&gt;&lt;p&gt;				4 -- precomputed kernel (kernel values in training_set_file)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest11">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;whether to use the shrinking heuristics, 0 or 1 (default 1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="labelParameter13">
+           <property name="text">
+            <string>Weight</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest12">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;whether to train a SVC or SVR model for probability estimates, 0 or 1 (default 0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest10">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set tolerance of termination criterion (default 0.001)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QDoubleSpinBox" name="SBTest6">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;set the parameter C of C-SVC, epsilon-SVR, and nu-SVR (default 1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="0">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="15" column="1">
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="buttonRunTest">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>30</y>
+          <width>31</width>
+          <height>391</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Predict</string>
+     </attribute>
+     <widget class="QGroupBox" name="GBPredict">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Predict</string>
+      </property>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>719</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Test</string>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>701</width>
+          <height>239</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="buttonPreProcessing">
+           <property name="text">
+            <string>PreProcessing On Image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="buttonCreatVF">
+           <property name="text">
+            <string>Create Vector Features</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="buttonSegmentation">
+           <property name="text">
+            <string>Segmentation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QPushButton" name="buttonGeneratorSign">
+           <property name="text">
+            <string>Generator sign</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="labelPredictResult">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QPushButton" name="myTest">
+           <property name="text">
+            <string>My test</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="buttonPredicleRunTest">
+           <property name="text">
+            <string>Run Test</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="buttonPropertysNoising">
+           <property name="text">
+            <string>Create Distortion Images</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="recognitionnlp.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>HSPropertys1</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS1</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>346</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>368</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS2</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>337</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>231</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS3</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys4</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS4</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>294</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys5</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS5</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>381</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys6</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS6</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>384</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>368</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys11</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS11</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>444</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys22</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS22</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys33</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS33</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys44</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS44</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys55</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS55</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>469</x>
+     <y>344</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>501</x>
+     <y>352</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSPropertys66</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelPropertysVS66</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>460</x>
+     <y>369</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>372</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSSegmentation1</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelSegmentationValue1</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>258</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSSegmentation2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelSegmentationValue2</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>473</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>534</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSSegmentation3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelSegmentationValue3</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>533</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HSSegmentation4</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelSegmentationValue4</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>485</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>528</x>
+     <y>343</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,15 @@
+﻿  Moc'ing ocr.h...
+  Uic'ing ocr.ui...
+  Rcc'ing ocr.qrc...
+RCC : warning : No resources in 'E:\Programs\C++\OCR\OCR\ocr.qrc'.
+  
+  moc_ocr.cpp
+  main.cpp
+  ocr.cpp
+  PreProcessing.cpp
+  Segmentation.cpp
+  Windows.cpp
+  Generating Code...
+  qrc_ocr.cpp
+  OCR.vcxproj -> E:\Programs\C++\OCR\x64\Debug\OCR.exe
+  OCR.vcxproj -> E:\Programs\C++\OCR\x64\Debug\OCR.pdb (Full PDB)

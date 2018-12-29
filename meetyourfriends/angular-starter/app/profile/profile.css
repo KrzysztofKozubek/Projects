@@ -1,0 +1,62 @@
+.btn-outline-primary {
+    color: #0275d8;
+    background-image: none;
+    background-color: transparent;
+    border-color: #0275d8;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #0275d8;
+}
+
+#navbar-search-form input {
+    width: 430px !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #0275d8;
+}
+
+.row > .img-responsive {
+    margin-bottom: 20px;
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.blue-friends {
+    color: #0275d8;
+}
+
+.md-whiteframe-1dp, .md-whiteframe-z1 {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255);
+}
+
+md-toolbar.md-default-theme.md-hue-3:not(.md-menu-toolbar), md-toolbar.md-hue-3:not(.md-menu-toolbar) {
+    background-color: #e3f2fd;
+}
+
+.timeline-border {
+    margin-top: 20px;
+    border: 1px solid;
+    border-color: rgba(0,0,0,0.12);
+}
+ .message-margin h5 {
+
+     padding-top: 20px;
+     margin-bottom: 25px;
+ }
+
+ .message-margin p {
+     padding-bottom: 20px;
+ }

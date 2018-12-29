@@ -1,0 +1,83 @@
+extends ../layout
+block content
+  link(rel='stylesheet' href='/partial/bootstrap-star-rating/css/star-rating.min.css')
+  include client_box
+  div(class='clientContainer container-fluid')
+    div(class='row container-spaces')
+      div(class='clientContent clearfix pageContent')
+        div(class='contentHeader col-md-12')
+          h2 Zamówienia
+        div(class='col-md-10 col-md-offset-1')
+          div(class='table-responsive')
+            table(class='table table-styled')
+              thead
+                tr 
+                  th Numer zamówienia
+                  th Wypożyczalnia
+                  th Usługa
+                  th Odbiór o
+                  th Opcje
+              tbody
+                for val in result
+                  tr
+                      td 
+                        a(id='orderDetails-#{val.OrderID}' href='#' data-toggle='modal' data-target='#orderDetail') #{val.OrderUniqueName}
+                      td #{val.PlaceName}, #{val.PlaceAddress}, #{val.PlaceCity}
+                      td #{val.OrderServiceType}
+                      td #{val.OrderDateStart}
+                      td
+                        if val.OrderIsRated 
+                          button(id='ratePlace-#{val.OrderID}' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#ratePlace' disabled)
+                            i(class='fa fa-star')
+                            |  Oceń wypożyczalnie 
+                        else
+                          button(id='ratePlace-#{val.OrderID}' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#ratePlace')
+                            i(class='fa fa-star')
+                            |  Oceń wypożyczalnie 
+          .modal.fade(role='dialog', id='orderDetail' aria-labelledby='#orderDetail')
+            .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    |         
+                    h4.modal-title Szczegóły Zamówienia
+                  |       
+                  .modal-body
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Powrót
+                // /.modal-content
+              // /.modal-dialog
+            // /.modal
+          .modal.fade(role='dialog', id='ratePlace' aria-labelledby='#ratePlace')
+            .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    |         
+                    h4.modal-title Oceń Lokal
+                  |       
+                  .modal-body
+                    form.row(id='ratePlaceForm' method='POST' action='/client/orders')
+                      #placeInfo.form-group.col-md-12
+                      .form-group.col-md-12
+                        label.control-label Ocena
+                        input#placeRate(type='hidden' name='placeRate' class='form-control')
+                      .form-group.col-md-12
+                        label.control-label Komentarz (opcjonalnie)
+                        textarea#placeDesc(name='placeDesc' class='form-control' rows='5')
+
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Powrót
+                    button.btn.btn-primary(id='rateSubmit' type='submit') Zapisz 
+                // /.modal-content
+              // /.modal-dialog
+            // /.modal
+  script.
+    $(function(){
+      $('#placeRate').rating({min:0, max:5, step:1, size:'sm', glyphicon: false, starCaptions:{1: '1/5',2: '2/5',3: '3/5',4: '4/5',5: '5/5'}});
+    });
+  script(type='text/javascript', src='/partial/bootstrap-star-rating/js/star-rating.min.js')
+  script(type='text/javascript', src='/javascript/orders.js')
+

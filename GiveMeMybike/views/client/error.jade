@@ -1,0 +1,12 @@
+extends ../layout
+block content
+  include client_box
+  div(class='clientContainer container-fluid')
+      div(class='row container-spaces')
+        div(class='clientContent clearfix pageContent' )
+          div(class='contentHeader col-md-12')
+            h2 #{header}
+          div(class='boxSuccess col-md-6 col-md-offset-3')
+            div(class='alert alert-danger')
+              p #{content}
+              a(class='btn btn-primary' href='#{backLink}') Powrót

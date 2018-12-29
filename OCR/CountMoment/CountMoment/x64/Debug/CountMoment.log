@@ -1,0 +1,59 @@
+﻿  PreProcessing.cpp
+e:\programs\c++\countmoment\countmoment\preprocessing.h(35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(57): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(177): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(198): warning C4244: 'argument': conversion from 'unsigned __int64' to 'double', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(387): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(388): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(425): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+e:\programs\c++\countmoment\countmoment\preprocessing.h(35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(57): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(177): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(198): warning C4244: 'argument': conversion from 'unsigned __int64' to 'double', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(387): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(388): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\preprocessing.h(425): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+e:\programs\c++\countmoment\countmoment\recognition.h(54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(182): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(183): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(184): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(185): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(187): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(188): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(190): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(192): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(193): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(194): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(195): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(196): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(197): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(198): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(199): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(200): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(201): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(202): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(203): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(204): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(205): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(207): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(208): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(209): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(210): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(211): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(212): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\programs\c++\countmoment\countmoment\recognition.h(213): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  CountMoment.vcxproj -> E:\Programs\C++\CountMoment\x64\Debug\CountMoment.exe
+  CountMoment.vcxproj -> E:\Programs\C++\CountMoment\x64\Debug\CountMoment.pdb (Partial PDB)

@@ -1,0 +1,86 @@
+extends ../layout
+block content
+  include client_box
+  div(class='clientContainer container-fluid')
+    div(class='row container-spaces')
+      div(class='clientContent clearfix pageContent')
+        div(class='contentHeader col-md-12')
+          h2 Wycieczki
+        div(class='col-lg-8')
+          h3 Aktualnie wycieczki
+          div(class='table-responsive')
+            table(class='table table-styled')
+              thead
+                tr 
+                  th Nazwa
+                  th Data rozpoczęcia
+                  th Start
+                  th Meta
+                  th Członkowie
+                  th Opcje
+              tbody
+                each val in result
+                  tr
+                    td 
+                      a(id='travelDetail-#{val.TripID}' href='#' data-toggle='modal' data-target='#travelDetails') #{val.TripName}
+                    td #{val.TripDateStartFormat}
+                    td #{val.TripStartPoint}
+                    td #{val.TripEndPoint}
+                    td 
+                      button(id='trip-#{val.TripID}' class='btn btn-sm btn-info' data-toggle='modal' data-target='#tripMemberList') 
+                        i(class='fa fa-list')
+                        |  Zobacz listę
+                    td
+                      if val.isMember == 0
+                        button(id='joinTravel-#{val.TripID}' class='btn btn-sm btn-success')
+                          i(class='fa fa-plus')
+                          |   Dołącz
+                      else if val.isMember == 1
+                        button(id='unsubscribeTravel-#{val.TripID}' class='btn btn-sm btn-danger')
+                          i(class='fa fa-minus')
+                          |   Wypisz się                        
+                      else if val.isMember == 2
+                        button(class='btn btn-sm btn-default' disabled)
+                          |   zakończony     
+        div(class='col-lg-4')
+              h3 Wycieczki w których uczestniczyłeś(-aś)
+              div(class='table-responsive')
+                table(class='table table-styled')
+                  thead
+                    tr 
+                      th Nazwa ( data )
+                  tbody
+                    each k in userTravels
+                      tr
+                        td #{k.TripName} ( #{k.TripDateStartFormat} )
+      .modal.fade(role='dialog', id='tripMemberList' aria-labelledby='#tripMemberList')
+        .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                |         
+                h4.modal-title Uczestnicy
+              |       
+              .modal-body
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Powrót
+            // /.modal-content
+          // /.modal-dialog
+        // /.modal 
+      .modal.fade(role='dialog', id='travelDetails' aria-labelledby='#travelDetails')
+        .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                |         
+                h4.modal-title Szczegóły wycieczki
+              |       
+              .modal-body
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Powrót
+            // /.modal-content
+          // /.modal-dialog
+        // /.modal
+  script(type='text/javascript', src='/javascript/travels.js')

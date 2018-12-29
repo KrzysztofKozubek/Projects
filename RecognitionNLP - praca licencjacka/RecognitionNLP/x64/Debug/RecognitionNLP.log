@@ -1,0 +1,12 @@
+﻿  Uic'ing recognitionnlp.ui...
+  moc_Recognitionnlp.cpp
+  Recognitionnlp.cpp
+Recognitionnlp.cpp(84): warning C4129: '>': unrecognized character escape sequence
+Recognitionnlp.cpp(85): warning C4129: '>': unrecognized character escape sequence
+Recognitionnlp.cpp(106): warning C4129: '>': unrecognized character escape sequence
+Recognitionnlp.cpp(107): warning C4129: '>': unrecognized character escape sequence
+Recognitionnlp.cpp(131): warning C4129: '>': unrecognized character escape sequence
+Recognitionnlp.cpp(132): warning C4129: '>': unrecognized character escape sequence
+  main.cpp
+  Generating Code...
+  RecognitionNLP.vcxproj -> G:\Programs\C++\Qt\RecognitionNLP\x64\Debug\RecognitionNLP.exe

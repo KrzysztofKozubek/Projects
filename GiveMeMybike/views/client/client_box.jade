@@ -1,0 +1,31 @@
+section(id='clientBox' class='container-fluid')
+  div(class='row container-spaces')
+    div(class='clientboxContent')
+      div(class='clientboxProfile col-lg-4 col-md-5 clearfix')
+        div(class='clientboxAvatar  pull-left')
+          img(src='/images/avatar.jpg' style='width:150px;height:150px;')
+        div(class='clientboxProfileText pull-left')
+          h4 #{personalData.UserName} #{personalData.UserSurname}
+          ul
+            li Stan konta : #{personalData.UserMoney} PLN
+            li 
+              a(href='/client/profile') edytuj profil
+      div(class='clientboxMenu col-lg-8 col-md-7')
+        nav
+          mixin iconLink(name, href, icon)
+            li
+              if clientPageName === href
+                a(class!=attributes.class+' clientActivePage' href=href title=name)
+                  i(class='fa fa-'+icon)
+                  =name
+              else
+                a(class!=attributes.class href=href title=name)
+                  i(class='fa fa-'+icon)
+                  =name          
+          ul
+            +iconLink('Wypożycz rower', '/client/rent', 'bicycle')
+            +iconLink('Wycieczki', '/client/travels', 'suitcase')
+            +iconLink('Płatności', '/client/payments', 'credit-card')
+            +iconLink('Zamówienia', '/client/orders', 'list-ul')
+
+

@@ -1,0 +1,40 @@
+<h1>Dodaj Film / Edit</h1>
+
+<div class="row">
+  <form action="#">
+    <div class="row input-field col s6">
+      <input placeholder="id" minlength="1" maxlength="150" id="id" type="text" class="validate" required (keyup)="clickID($event)">
+      <label for="id">id - do edycji filmu!</label>
+      <input placeholder="title" value="{{movie.title}}" minlength="1" maxlength="150" id="title" type="text" class="validate" required (keyup)="clickTitle($event)">
+      <input placeholder="poster" value="{{movie.poster}}" minlength="1" maxlength="150" id="poster" type="text" class="validate" required (keyup)="clickPoster($event)">
+      <input placeholder="description" value="{{movie.description}}" minlength="1" maxlength="150" id="description" type="text" class="validate" required (keyup)="clickDescription($event)">
+      <input placeholder="genre" value="{{movie.genre}}" minlength="1" maxlength="150" id="genre" type="text" class="validate" required (keyup)="clickGenre($event)">
+      <input placeholder="releaseDate" value="{{movie.releaseDate}}" minlength="1" maxlength="150" id="releaseDate" type="date" class="validate" required (keyup)="clickDate($event)">
+      <input placeholder="mark" value="{{movie.mark}}" minlength="1" maxlength="150" id="mark" type="number" class="validate" required (keyup)="clickMark($event)">
+      <input placeholder="length" value="{{movie.length}}" minlength="1" maxlength="150" id="length" type="number" class="validate" required (keyup)="clickLength($event)">
+      <input placeholder="price" value="{{movie.price}}" minlength="1" maxlength="150" id="price" type="number" class="validate" required (keyup)="clickPrice($event)">
+    </div>
+  </form>
+  <div id="work" class="section scrollspy">
+    <section class="container">
+      <section class="col s12 m4 l4">
+        <article class="card">
+          <div class="card-image waves-effect waves-block waves-light"><img src="{{movie.poster}}" class="activator"/></div>
+          <div class="card-content"><span class="rolling card-title activator grey-text text-darken-4">{{movie.title}}</span></div>
+          <div class="card-reveal"><span class="card-title grey-text text-darken-4">{{movie.title}}<i class="mdi-navigation-close right"></i></span>
+            <p>{{movie.description}}</p>
+            <p>Gatunek: {{movie.genre}}</p>
+            <p>Premiera: {{movie.releaseDate}}</p>
+            <p>Ocena: {{movie.mark}}</p>
+            <p>Dłygość: {{movie.length}}min</p>
+            <p>Cena: {{movie.price}} PLN</p>
+          </div>
+        </article>
+      </section>
+    </section>
+  </div>
+</div>
+
+<button (click)="click()" class="btn waves-effect waves-light" type="submit" name="action">Potwierdz
+  <i class="material-icons right">Potwierdz</i>
+</button>
