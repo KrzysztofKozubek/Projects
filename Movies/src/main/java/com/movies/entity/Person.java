@@ -3,6 +3,7 @@ package com.movies.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Builder
 @NoArgsConstructor
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Data
 @Setter
 @Entity
-public class Movie {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,14 +20,11 @@ public class Movie {
     private Long id;
 
     @Column(unique = false, nullable = false)
-    private String poster;
-
-    @Column(unique = false, nullable = false)
-    private String title;
-
-    @Column(unique = false, nullable = false)
-    private String description;
+    private String name;
 
     @Column(unique = false, nullable = true)
-    private String trailer;
+    private Date born;
+
+    @Column(unique = false, nullable = true)
+    private String photo;
 }

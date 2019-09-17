@@ -6,6 +6,7 @@ All my projects
 
 * java script ES6
 * program creating dot matrix. Information about structure protein is download from database PDB. To generate chart and matrix are used amcharts.
+* project is published on website: http://crick.cm-uj.krakow.pl/kozubek/.
 
 ## Ebiznes
 
