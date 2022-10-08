@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Edit Transaction Category</h1>
+
+<mat-divider></mat-divider>
+<form [formGroup]="editTransactionCategoryForm" (ngSubmit)="editTransactionCategory()" class="example-form" style="min-width: 700px;">
+  <mat-card-actions style="width: 100%; margin: 0 auto;">
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Enter transaction category name</mat-label>
+      <input matInput #inputName type="text" id="name" formControlName="name" minlength="1" maxlength="50">
+      <button mat-icon-button matSuffix>
+        <mat-icon>type_specimen</mat-icon>
+      </button>
+      <mat-hint align="end">{{inputName.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-chip-list" appearance="fill" style="width: 100%;">
+      <mat-label>Key word</mat-label>
+      <mat-chip-list #chipList aria-label="Key word">
+        <mat-chip *ngFor="let item of _keywords" (removed)="removeKeyWord(item)">
+          {{item}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input placeholder="New keyword..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addKeyWord($event)">
+      </mat-chip-list>
+    </mat-form-field>
+
+    <mat-card-footer>
+      <button mat-button mat-dialog-close="no">Close</button>
+      <button mat-raised-button color="primary">
+        <mat-icon>add</mat-icon>
+        EDIT TRANSACTION CATEGORY
+      </button>
+    </mat-card-footer>
+  </mat-card-actions>
+</form>

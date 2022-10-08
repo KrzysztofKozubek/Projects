@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.koz.wallet.app.transaction.mapper.TransactionMapper">
+
+    <resultMap id="TransactionMap" type="org.koz.wallet.app.transaction.model.Transaction">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="amount" property="amount"/>
+        <result column="timestamp" property="timestamp"/>
+        <result column="bank_id" property="bankId"/>
+        <result column="wallet_id" property="walletId"/>
+    </resultMap>
+
+    <insert id="addTransaction">
+        INSERT INTO transaction (user_id, name, amount, timestamp, category_id, bank_id, wallet_id)
+        VALUES ( #{transaction.userId}
+               , #{transaction.name}
+               , #{transaction.amount}
+               , #{transaction.timestamp}
+               , #{transaction.categoryId}
+               , #{transaction.bankId}
+               , #{transaction.walletId})
+    </insert>
+
+    <insert id="addTransactions">
+        INSERT INTO transaction (user_id, name, amount, timestamp, category_id, bank_id, wallet_id)
+        VALUES
+        <foreach collection="transactions" item="transaction" separator=",">
+            ( #{transaction.userId}
+            , #{transaction.name}
+            , #{transaction.amount}
+            , #{transaction.timestamp}
+            , #{transaction.categoryId}
+            , #{transaction.bankId}
+            , #{transaction.walletId})
+        </foreach>
+    </insert>
+
+    <update id="editTransaction">
+        UPDATE transaction
+        SET name        = '${transaction.name}'
+          , category_id = ${transaction.categoryId}
+          , amount      = ${transaction.amount}
+          , timestamp   = '${transaction.timestamp}'
+          , bank_id     = ${transaction.bankId}
+          , wallet_id   = ${transaction.walletId}
+        WHERE transaction.id = #{transaction.id}
+          and transaction.user_id = #{transaction.userId};
+    </update>
+
+    <delete id="removeTransaction">
+        DELETE
+        FROM transaction
+        WHERE transaction.user_id = #{userId}
+          AND transaction.id = #{transactionId};
+    </delete>
+
+    <select id="getUserTransactions" resultMap="TransactionMap">
+        SELECT id
+             , user_id
+             , name
+             , amount
+             , timestamp
+             , category_id
+             , bank_id
+             , wallet_id
+        FROM transaction
+        WHERE transaction.user_id = #{userId}
+    </select>
+
+    <select id="getTransaction" resultMap="TransactionMap">
+        SELECT id
+             , user_id
+             , name
+             , amount
+             , timestamp
+             , category_id
+             , bank_id
+             , wallet_id
+        FROM transaction
+        WHERE transaction.user_id = #{userId}
+          AND transaction.id = #{transactionId};
+    </select>
+</mapper>

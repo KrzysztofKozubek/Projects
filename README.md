@@ -42,3 +42,9 @@ All my projects
 
 * php & nodejs & java(test)
 * frontend and tests was createing by another persons. Orgnial repository u can find here: https://bitbucket.org/annaksyta/myf
+
+## My Wallet
+
+* front Angular
+* backend Java / Spring
+* app to track your expenses. Project published on website: https://kk-my-wallet.herokuapp.com/

@@ -1,0 +1,60 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.koz.wallet.security.jwt.mapper.AuthenticationMapper">
+    <resultMap id="UserContextResultMap" type="org.koz.wallet.security.jwt.model.UserContext">
+        <result column="id" property="id"/>
+        <result column="nickname" property="nickname"/>
+        <result column="login" property="login"/>
+        <result column="password" property="password"/>
+        <result column="enabled" property="enabled"/>
+        <collection property="authorities" resultMap="PermissionResultMap"/>
+    </resultMap>
+
+    <resultMap id="PermissionResultMap" type="org.koz.wallet.security.jwt.model.CustomPermission">
+        <result column="permission" property="authority"/>
+    </resultMap>
+
+    <resultMap id="LoginResultMap" type="org.koz.wallet.security.jwt.model.LoginData">
+        <result column="usr_login" property="login"/>
+        <result column="usr_password" property="password"/>
+    </resultMap>
+
+    <insert id="addUser">
+        INSERT INTO t_sys_user (nickname, login, password)
+        VALUES (#{registration.name}, #{registration.login}, #{registration.password})
+    </insert>
+
+    <select id="getUserContext" resultMap="UserContextResultMap">
+        select t_sys_user.id
+        from t_sys_user
+        where t_sys_user.id = #{id}
+    </select>
+
+    <select id="findOneByUserName" resultMap="UserContextResultMap">
+        SELECT t_sys_user.id
+             , t_sys_user.nickname
+             , t_sys_user.login
+             , t_sys_user.password
+             , 1 as enabled
+--                ,t_sys_auth.permission
+        FROM t_sys_user
+--             INNER JOIN t_sys_user_role ON t_sys_user.id = t_sys_user_role.user_id
+--             INNER JOIN t_sys_role ON t_sys_user_role.role_id = t_sys_role.id
+--             INNER JOIN t_sys_role_auth ON t_sys_role.id = t_sys_role_auth.id
+--             INNER JOIN t_sys_auth ON t_sys_role_auth.auth_id = t_sys_auth.id
+        WHERE t_sys_user.login = #{username}
+    </select>
+
+    <select id="checkCanRegister" resultType="java.lang.Boolean">
+        SELECT CASE
+                   WHEN EXISTS
+                       (
+                           SELECT 1
+                           FROM t_sys_user
+                           WHERE t_sys_user.login = #{registration.login}
+                       )
+                       THEN 'FALSE'
+                   ELSE 'TRUE'
+                   END
+    </select>
+</mapper>

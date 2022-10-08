@@ -1,0 +1,208 @@
+<mat-card>
+  <mat-card-title>Import transaction</mat-card-title>
+  <mat-stepper orientation="vertical" #stepper>
+    <mat-step [stepControl]="importCSV1Step">
+      <form [formGroup]="importCSV1Step">
+        <ng-template matStepLabel>Upload file</ng-template>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label>Upload file</mat-label>
+          <input matInput (click)="fileUpload.click()" [value]="_files?.['0']?.name" type="text">
+          <input matInput #fileUpload (change)="onFileSelected($event)"
+                 type="file" id="file" formControlName="fileControl" hidden>
+          <button mat-icon-button matSuffix (click)="fileUpload.click()">
+            <mat-icon>payments</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label>Enter csv delimiter</mat-label>
+          <input matInput #inputDelimiter formControlName="delimiter" type="text" id="delimiter" minlength="1" maxlength="1">
+          <button mat-icon-button matSuffix>
+            <mat-icon>payments</mat-icon>
+          </button>
+          <mat-hint align="end">{{inputDelimiter.value?.length || 0}}/1</mat-hint>
+        </mat-form-field>
+
+        <div>
+          <button disabled matStepperPrevious mat-raised-button color="primary"><mat-icon>chevron_left</mat-icon> Back</button>
+          <button matStepperNext mat-raised-button color="primary" (click)="uploadFile()" ><mat-icon>chevron_right</mat-icon> Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="configMapper2Step">
+      <form [formGroup]="configMapper2Step">
+        <ng-template matStepLabel>Fill configuration mapper</ng-template>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label><mat-icon>account_balance</mat-icon> Bank name</mat-label>
+          <mat-select id="bankId" formControlName="bankId" (selectionChange)="prepareTransaction()">
+            <mat-option *ngFor="let item of _banks" [value]="item">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label><mat-icon>account_balance</mat-icon> Transaction name</mat-label>
+          <mat-select formControlName="mapTransactionName" (selectionChange)="prepareTransaction()">
+            <mat-option *ngFor="let item of _fileColumns" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label><mat-icon>account_balance</mat-icon> Amount</mat-label>
+          <mat-select formControlName="mapAmount" (selectionChange)="prepareTransaction()">
+            <mat-option *ngFor="let item of _fileColumns" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label><mat-icon>account_balance</mat-icon> Transaction time</mat-label>
+          <mat-select formControlName="mapTime" (selectionChange)="prepareTransaction()">
+            <mat-option *ngFor="let item of _fileColumns" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button (click)="prepareTransaction()" matStepperPrevious mat-raised-button color="primary"><mat-icon>chevron_left</mat-icon> Back</button>
+          <button (click)="prepareTransaction()" matStepperNext mat-raised-button color="primary"><mat-icon>chevron_right</mat-icon> Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="configCategory3Step">
+      <form [formGroup]="configCategory3Step">
+        <ng-template matStepLabel>Confirm configuration</ng-template>
+
+        <mat-form-field appearance="fill" style="margin: 1em;">
+          <mat-label><mat-icon>account_balance</mat-icon> Select default transaction category</mat-label>
+          <mat-select formControlName="dtc" (selectionChange)="changeDefaultTransactionCategory()">
+            <mat-option *ngFor="let item of _transactionCategories" [value]="item" >
+              {{item?.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+          <mat-label>Configuration transaction category</mat-label>
+          <textarea [value]="_transactionCategories | json" id="configCategory" formControlName="configCategory"
+                    matInput placeholder="Ex. It makes me feel..." rows="25">
+          </textarea>
+        </mat-form-field>
+
+        <div>
+          <button (click)="prepareTransaction()" matStepperPrevious mat-raised-button color="primary"><mat-icon>chevron_left</mat-icon> Back</button>
+          <button (click)="prepareTransaction()" matStepperNext mat-raised-button color="primary"><mat-icon>chevron_right</mat-icon> Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button disabled matStepperPrevious mat-raised-button color="primary"><mat-icon>chevron_left</mat-icon> Back</button>
+        <button (click)="importTransactionList()" matStepperNext mat-raised-button color="primary"><mat-icon>chevron_right</mat-icon> Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-card>
+<br/>
+<mat-card>
+  <mat-card-title>Import details</mat-card-title>
+  <div class="title">Selected file(s): <p *ngFor="let item of _files">{{item?.name}}</p></div>
+</mat-card>
+<br/>
+
+<mat-card>
+  <mat-card-title>Transactions</mat-card-title>
+  <mat-card-actions>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+           class="mat-elevation-z8">
+
+      <!-- wallet Column -->
+      <ng-container matColumnDef="wallet">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by wallet">
+          Wallet Name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+            {{element.wallet}} </div>
+        </td>
+      </ng-container>
+
+      <!-- bank Column -->
+      <ng-container matColumnDef="bank">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by bank">
+          Bank Name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>account_balance</mat-icon>
+            {{element.bank}} </div>
+        </td>
+      </ng-container>
+
+      <!-- transaction name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by transaction name">
+          Transaction name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>payments</mat-icon>
+            {{element.name}} </div>
+        </td>
+      </ng-container>
+
+      <!-- amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by amount">
+          Amount
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>amount</mat-icon>
+            {{element.amount}} PLN </div>
+        </td>
+      </ng-container>
+
+      <!-- category Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+          Category
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>amount</mat-icon>
+            {{element.categoryName}} </div>
+        </td>
+      </ng-container>
+
+      <!-- timestamp Column -->
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by timestamp">
+          Timestamp
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div mat-line>
+            <mat-icon mat-list-icon>amount</mat-icon>
+            {{element.timestamp}} </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   pageSize="20"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </mat-card-actions>
+</mat-card>

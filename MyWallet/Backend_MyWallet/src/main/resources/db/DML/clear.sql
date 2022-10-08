@@ -1,0 +1,8 @@
+--liquibase formatted sql
+--changeset author:kris nvoxland:1653243969
+-- DROP TABLE IF EXISTS t_sys_user_role;
+-- DROP TABLE IF EXISTS t_sys_role_auth;
+-- DROP TABLE IF EXISTS t_sys_user;
+-- DROP TABLE IF EXISTS t_sys_log;
+-- DROP TABLE IF EXISTS t_sys_auth;
+-- DROP TABLE IF EXISTS t_sys_role;

@@ -1,0 +1,55 @@
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.mat-card {
+  width: 100%;
+}
+
+.main-div {
+  max-width: 100%;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.flex-spacer[_ngcontent-amy-c46] {
+  flex-grow: 1;
+}
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+svg#clouds {
+  position: fixed;
+  bottom: -160px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+}
+
+.mat-dialog-actions[align='end'] {
+  justify-content: flex-end;
+}
+.mat-dialog-actions[align='center'] {
+  justify-content: center;
+}
+
+.example-form {
+  max-width: none;
+}

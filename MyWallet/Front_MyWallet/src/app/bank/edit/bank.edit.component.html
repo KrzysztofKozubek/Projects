@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Edit Transaction Category</h1>
+<form [formGroup]="editForm">
+  <mat-card-actions style="width: 100%; margin: 0 auto; padding: 20px;">
+    <mat-form-field appearance="fill" style="margin: 1em;">
+      <mat-label>
+        <mat-icon>account_balance_wallet</mat-icon>
+        Wallet
+      </mat-label>
+      <mat-select id="wallet" formControlName="wallet">
+        <mat-option *ngFor="let item of _wallets" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin: 1em;">
+      <mat-label>Enter bank name</mat-label>
+      <input matInput #inputName type="text" id="bank" formControlName="bank" minlength="1" maxlength="50">
+      <button mat-icon-button matSuffix>
+        <mat-icon>account_balance</mat-icon>
+      </button>
+      <mat-hint align="end">{{inputName.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always" style="margin: 1em;">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" formControlName="amount" id="amount" class="example-right-align"
+             placeholder="0">
+      <span matPrefix>PLN</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+
+    <mat-card-footer>
+      <button mat-button mat-dialog-close="no">Close</button>
+      <button mat-raised-button color="primary" (click)="editBank()">
+        <mat-icon>edit</mat-icon>
+        EDIT BANK
+      </button>
+    </mat-card-footer>
+  </mat-card-actions>
+</form>

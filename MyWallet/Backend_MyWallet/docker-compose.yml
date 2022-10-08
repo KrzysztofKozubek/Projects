@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.4
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_DB_HOST=*
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=wallet
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  wallet:
+    build: .
+    container_name: kk-wallet
+    restart: always
+    environment:
+      - SERVER_PORT=8080
+      - DATASOURCE_CLASS_NAME=org.postgresql.Driver
+      - DATASOURCE_URI=jdbc:postgresql://192.168.55.118:5432/wallet
+      - DATASOURCE_USER=admin
+      - DATASOURCE_PASSWORD=admin
+      - LIQUIBASE_CONTEXT=dev
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+volumes:
+  db:
+    driver: local

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.koz.wallet.app.transaction.mapper.TransactionGroupCategoryMapper">
+
+    <resultMap id="TransactionGroupCategoryMap" type="org.koz.wallet.app.transaction.model.TransactionGroupCategory">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="color" property="color"/>
+        <result column="keywords" property="keywords"/>
+    </resultMap>
+
+    <insert id="add">
+        INSERT INTO transaction_group_category (user_id, name, color, keywords)
+        VALUES (#{item.userId}, #{item.name}, #{item.color}, #{item.keywords})
+    </insert>
+
+    <update id="edit">
+        UPDATE transaction_group_category
+        SET name     = #{item.name}
+          , keywords = #{item.keywords}
+          , color    = #{item.color}
+        WHERE id = #{item.id}
+          and user_id = #{item.userId};
+    </update>
+
+    <delete id="remove">
+        DELETE
+        FROM transaction_group_category
+        WHERE id = #{itemId}
+          and user_id = #{userId};
+    </delete>
+
+    <select id="getAllUser" resultMap="TransactionGroupCategoryMap">
+        SELECT id
+             , user_id
+             , name
+             , color
+             , keywords
+        FROM transaction_group_category
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

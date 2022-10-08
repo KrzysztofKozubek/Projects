@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.koz.wallet.app.transaction.mapper.TransactionCategoryMapper">
+
+    <resultMap id="TransactionCategoryMap" type="org.koz.wallet.app.transaction.model.TransactionCategory">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="keywords" property="keywords"/>
+    </resultMap>
+
+    <insert id="addTransactionCategory">
+        INSERT INTO transaction_category (user_id, name, keywords)
+        VALUES (#{transactionCategory.userId}, #{transactionCategory.name}, #{transactionCategory.keywords})
+    </insert>
+
+    <update id="editNameTransactionCategory">
+        UPDATE transaction_category
+        SET name = #{transactionCategory.name}
+        WHERE transaction_category.id = #{transactionCategory.id} and transaction_category.user_id = #{transactionCategory.userId};
+    </update>
+
+    <update id="editTransactionCategory">
+        UPDATE transaction_category
+        SET name = #{transactionCategory.name}
+        ,keywords = #{transactionCategory.keywords}
+        WHERE transaction_category.id = #{transactionCategory.id} and transaction_category.user_id = #{transactionCategory.userId};
+    </update>
+
+    <delete id="removeTransactionCategory">
+        DELETE FROM transaction_category
+        WHERE transaction_category.id = #{transactionCategoryId} and transaction_category.user_id = #{userId};
+    </delete>
+
+    <select id="getUserTransactionsCategory" resultMap="TransactionCategoryMap">
+        SELECT id
+               , user_id
+               , name
+               , keywords
+        FROM transaction_category
+        WHERE transaction_category.user_id = #{userId}
+    </select>
+</mapper>

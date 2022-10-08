@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.koz.wallet.app.bank.mapper.BankMapper">
+
+    <resultMap id="BankMap" type="org.koz.wallet.app.bank.model.Bank">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="wallet_id" property="walletId"/>
+        <result column="name" property="name"/>
+        <result column="amount_of_money" property="amount"/>
+    </resultMap>
+
+    <sql id="CONDITION_OWNER_USER">
+        bank.id = #{bank.id} and bank.user_id = #{bank.userId}
+    </sql>
+
+    <insert id="addBank">
+        INSERT INTO bank (user_id, wallet_id, name, amount_of_money)
+        VALUES (#{bank.userId}, #{bank.walletId}, #{bank.name}, #{bank.amount});
+    </insert>
+
+    <update id="editBankName">
+        UPDATE bank
+        SET name = #{bank.name}
+        WHERE <include refid="CONDITION_OWNER_USER"/>;
+    </update>
+
+    <update id="editBank">
+        UPDATE bank
+        SET name = #{bank.name}
+        , amount_of_money = #{bank.amount}
+        , wallet_id = #{bank.walletId}
+        WHERE <include refid="CONDITION_OWNER_USER"/>;
+    </update>
+
+    <update id="editBankAmount">
+        UPDATE bank
+        SET amount_of_money = #{bank.amount}
+        WHERE <include refid="CONDITION_OWNER_USER"/>;
+    </update>
+
+    <update id="registerTransaction">
+        UPDATE bank
+        SET amount_of_money = amount_of_money + #{transaction.amount}
+        WHERE bank.id = #{transaction.bankId} and bank.user_id = #{transaction.userId}
+    </update>
+
+    <delete id="removeBank">
+        DELETE FROM bank
+        WHERE bank.user_id = #{userId} AND bank.id = #{bankId};
+    </delete>
+
+    <select id="getUserBanks" resultMap="BankMap">
+        SELECT id
+               , user_id
+               , wallet_id
+               , name
+               , amount_of_money
+        FROM bank
+        WHERE bank.user_id = #{userId}
+    </select>
+
+    <select id="getUserBanksInWallet" resultMap="BankMap">
+        SELECT id
+               , user_id
+               , wallet_id
+               , name
+               , amount_of_money
+        FROM bank
+        WHERE bank.user_id = #{userId} AND bank.wallet_id = #{walletId}
+    </select>
+
+    <select id="getBank" resultMap="BankMap">
+        SELECT bank.id
+               , bank.user_id
+               , bank.wallet_id
+               , bank.name
+               , bank.amount_of_money
+        FROM bank
+        WHERE bank.id = #{bankId} and bank.user_id = #{userId}
+    </select>
+</mapper>

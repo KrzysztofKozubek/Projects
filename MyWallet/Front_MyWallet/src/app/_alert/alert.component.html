@@ -1,0 +1,13 @@
+<div class="alerts">
+  <div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+    <div class="icon pull-left">
+      <i class="fa fa-info fa-2x">
+        <mat-icon (click)="removeAlert(alert)">close</mat-icon>
+      </i>
+    </div>
+    <div class="copy">
+      <h4 [innerHTML]="messageType(alert)"></h4>
+      <p [innerHTML]="alert.message"></p>
+    </div>
+  </div>
+</div>

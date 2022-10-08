@@ -1,0 +1,121 @@
+.alert-danger {
+  background-color: #f44336; /* Red */
+}
+.alert-success {
+  background-color: #36f456;
+}
+.alert{
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  z-index: 2000;
+}
+.alerts {
+  position: absolute;
+  top: 70px;
+  right: 1em;
+  width: 400px;
+  min-height: 300px;
+}
+.alerts .alert {
+  position: relative;
+  border: none !important;
+  margin-bottom: 8px;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+}
+.alerts .alert .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: -15px;
+  width: 80px;
+  text-align: center;
+}
+.alerts .alert .copy {
+  margin-left: 60px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(255,255,255,0.3);
+  line-height: 1.2;
+}
+.alerts .alert .copy h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.alerts .alert .copy p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.alerts .alert .close {
+  opacity: 1;
+  background-color: #eee;
+  width: 30px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid #333;
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+}
+.alerts .alert.alert-info {
+  background-color: #A3ADB2;
+  color: #eee;
+  box-shadow: 0 0 20px 5px rgba(163,173,178,0.5);
+}
+.alerts .alert.alert-info .close {
+  color: #A3ADB2;
+  border-color: #A3ADB2;
+}
+.alerts .alert.alert-success {
+  background-color: #A4B123;
+  color: #eee;
+  box-shadow: 0 0 20px 5px rgba(164,177,35,0.5);
+}
+.alerts .alert.alert-success .close {
+  color: #A4B123;
+  border-color: #A4B123;
+}
+.alerts .alert.alert-warning {
+  background-color: #E7B600;
+  color: #eee;
+  box-shadow: 0 0 20px 5px rgba(231,182,0,0.4);
+}
+.alerts .alert.alert-warning .close {
+  color: #E7B600;
+  border-color: #E7B600;
+}
+.alerts .alert.alert-danger {
+  background-color: #C20000;
+  color: #eee;
+  box-shadow: 0 0 20px 5px rgba(194,0,0,0.3);
+}
+.alerts .alert.alert-danger .close {
+  color: #C20000;
+  border-color: #C20000;
+}
+.hero {
+  min-height: 500px;
+}
+header {
+  position: relative;
+}
+header .markets {
+  background-color: black;
+  height: 30px;
+}
+header .navbar {
+  border-radius: none;
+  margin-bottom: 0;
+}
+header .navbar .navbar-brand {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+header .navbar .navbar-nav > li > a {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}

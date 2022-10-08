@@ -1,0 +1,38 @@
+server:
+  port: "${SERVER_PORT:8080}"
+  servlet:
+    context-path: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: always
+    include-exception: true
+
+spring:
+  application:
+    name: wallet
+  datasource:
+    driverClassName: "${DATASOURCE_CLASS_NAME:org.postgresql.Driver}"
+    url: "${DATASOURCE_URI:jdbc:postgresql://ec2-54-228-32-29.eu-west-1.compute.amazonaws.com:5432/xxxxxxxx}"
+    username: "${DATASOURCE_USER:xxxxxxxxxxxxxxxxx}"
+    password: "${DATASOURCE_PASSWORD:xxxxxxxxxxxxxxxxxxxxxx}"
+  jpa:
+    show-sql: true
+  hikari:
+    maximum-pool-size: 20
+    allow-pool-suspension: false
+  liquibase:
+    change-log: classpath:liquibase/db.changelog.diff.xml
+    contexts: "${LIQUIBASE_CONTEXT:dev}"
+  main:
+    allow-bean-definition-overriding: true
+
+mybatis:
+  typeAliasesPackage: org.koz.wallet;
+  mapper-locations: classpath*:**/wallet/**/mapper/*.xml
+  type-handlers-package: org.koz.wallet.mybatis.type.handler
+
+jwt:
+  secret: FAE55D89C8C99D32785202047C5161CC2A9C36B8F75C02FFBC84EDAC5F1D3E66
+  expiration:
+    time: 3600000

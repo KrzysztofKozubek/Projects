@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
+    <mat-card-actions style="width: 100%; margin: 0 auto; padding: 20px;">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your login</mat-label>
+        <input matInput #inputLogin type="text" id="login" formControlName="login" minlength="1" maxlength="50">
+        <button mat-icon-button matSuffix>
+          <mat-icon>key</mat-icon>
+        </button>
+        <mat-hint align="end">{{inputLogin.value?.length || 0}}/50</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput #inputPassword [type]="hide ? 'password' : 'text'" id="password" formControlName="password"
+               minlength="1" maxlength="50">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint align="end">{{inputPassword.value?.length || 0}}/50</mat-hint>
+      </mat-form-field>
+    </mat-card-actions>
+    <mat-card-footer>
+      <button mat-raised-button color="primary">LOGIN</button>
+    </mat-card-footer>
+  </form>
+</mat-card>

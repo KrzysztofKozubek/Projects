@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Add Transaction Category</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Develop across all platforms</h3>
+  <p>Transaction categorization aids the retail user to categorize or split (more than one category) a particular transaction, which will be used for expense and budget analysis. Categorization or split of transaction will be available in each account type (Account summary, operative accounts, deposit accounts, loan accounts, credit cards and other bank accounts). In Transaction Categorization, retail user is enabled to categorize his expenses and income under defined categories which the user has linked to his account. This helps retail user to keep track of their spending and income.
+
+    This screen allows the retail user to categorize or split the transactions that were initiated for the selected accounts. The transaction list by default would be shown for last three months transaction for the account chosen. However, this is a configurable parameter and retail user can list the transactions based on the search criteria also. The result list shows the bank name, account number, date of transaction, remarks, category, amount type, amount and whether the transaction is split or not. Retail user can choose the transactions and update the category of the transactions according to his need. Any transaction which is not categorized would by default remain as Uncategorized. Retail user will also not be able to set any budget details for this category.
+
+    Retail user can choose any records and update the category or can split any transactions. Splitting isn’t possible for already split transactions and hence updating the category of split transactions is also not possible. For already split transactions, the category column is disabled and is displayed as Uncategorized. However, retail users can update the already split transactions using Split Transaction function.</p>
+
+  <form [formGroup]="addTransactionCategoryForm" (ngSubmit)="addTransactionCategory()" class="example-form">
+    <mat-card-actions style="width: 100%;">
+      <mat-form-field appearance="fill" style="width: 100%; margin: 1em;">
+        <mat-label>Enter transaction category name</mat-label>
+        <input matInput #inputName type="text" id="name" formControlName="name" minlength="1" maxlength="50">
+        <button mat-icon-button matSuffix>
+          <mat-icon>type_specimen</mat-icon>
+        </button>
+        <mat-hint align="end">{{inputName.value?.length || 0}}/50</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-chip-list" appearance="fill" style="width: 100%; margin: 1em;">
+        <mat-label>Key word</mat-label>
+        <mat-chip-list #chipList aria-label="Key word">
+          <mat-chip *ngFor="let item of _keywords" (removed)="removeKeyWord(item)">
+            {{item}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="New keyword..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="true"
+                 (matChipInputTokenEnd)="addKeyWord($event)">
+        </mat-chip-list>
+      </mat-form-field>
+
+      <mat-card-footer>
+        <button mat-button mat-dialog-close="no">Close</button>
+        <button mat-raised-button color="primary">
+          <mat-icon>add</mat-icon>
+          ADD TRANSACTION CATEGORY
+        </button>
+      </mat-card-footer>
+    </mat-card-actions>
+  </form>
+</mat-dialog-content>
